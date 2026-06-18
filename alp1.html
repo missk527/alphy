@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amplitude and Wavelength</title>
+<style>
+:root{--brand:#0ea5e9;--ink:#1f2937;--paper:#fafafa;--card:#ffffff;--muted:#6b7280;--good:#16a34a;--bad:#dc2626;}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--ink);background:var(--paper);line-height:1.6;}
+header{background:linear-gradient(135deg,var(--brand),#6366f1);color:white;padding:20px 16px;text-align:center;}
+.wrap{max-width:1000px;margin:0 auto;padding:16px}
+.card{background:var(--card);border-radius:12px;padding:18px;box-shadow:0 6px 18px rgba(2,6,23,.08);margin:16px 0;}
+iframe{width:100%;max-width:900px;height:480px;border:0;border-radius:12px;}
+details{border:1px solid #e5e7eb;border-radius:10px;padding:10px 12px;margin:10px 0;background:#fff;}
+summary{font-weight:700;color:#0f766e;cursor:pointer;}
+.btn{background:var(--brand);color:white;border:0;border-radius:10px;padding:10px 14px;font-weight:700;cursor:pointer;}
+.correct{color:green}.incorrect{color:red}
+</style>
+</head>
+<body>
+<header><h1>ALP1. Amplitude and Wavelength</h1></header>
+<div class="wrap">
+<div class="card"><iframe src="https://www.youtube.com/embed/hcYg3FJkq-0" allowfullscreen></iframe></div>
+<section class="card"><h2>Key Notes (Synced with Video)</h2>
+<details open>
+<summary>0:00 - 1:12 | Amplitude and Displacement</summary>
+<ul>
+<li>Waves are made from oscillations that move points away from their equilibrium position.</li>
+<li>Displacement is a vector, so it must include both distance and direction from equilibrium.</li>
+<li>One direction can be defined as positive and the opposite direction as negative.</li>
+<li>Displacement can be shown on a graph against either distance or time.</li>
+</ul>
+</details>
+<details>
+<summary>1:12 - 2:47 | Finding Amplitude</summary>
+<ul>
+<li>Amplitude is the magnitude of the maximum displacement from the equilibrium position.</li>
+<li>Because amplitude is a magnitude, it is positive even when measured from a negative displacement.</li>
+<li>The highest points on a wave are called peaks, and the lowest points are called troughs.</li>
+<li>Amplitude can be measured from the equilibrium line to either a peak or a trough.</li>
+</ul>
+</details>
+<details>
+<summary>2:47 - 5:21 | Wavelength and Wave Cycles</summary>
+<ul>
+<li>Wavelength is the length of one complete oscillation of a wave.</li>
+<li>It is the distance between adjacent points with the same displacement and velocity.</li>
+<li>The wavelength symbol is the Greek letter lambda, λ.</li>
+<li>The simplest way to measure wavelength is between two neighbouring peaks or two neighbouring troughs.</li>
+</ul>
+</details>
+<details>
+<summary>5:21 - 7:04 | Labeling Waves on Graphs</summary>
+<ul>
+<li>On a displacement-distance graph, displacement is placed on the y-axis and distance on the x-axis.</li>
+<li>Peaks show maximum displacement, while troughs show minimum displacement.</li>
+<li>Amplitude is the maximum magnitude of displacement from equilibrium.</li>
+<li>Wavelength can be labeled between two adjacent peaks, two adjacent troughs, or equivalent points in adjacent cycles.</li>
+</ul>
+</details>
+<details>
+<summary>7:04 - 9:10 | Worked Example</summary>
+<ul>
+<li>First label the equilibrium position and the peaks of the wave.</li>
+<li>Amplitude is found by measuring from the equilibrium position to a peak.</li>
+<li>In the example, the peak is at 4 m and equilibrium is at 2 m, so the amplitude is 2 m.</li>
+<li>The wavelength is found from the distance between adjacent peaks: 70 m - 30 m = 40 m.</li>
+</ul>
+</details>
+</section>
+<section class="card"><h2>Quiz (40 Questions)</h2><div id="game-area"><button class="btn" onclick="startGame()">Start Quiz</button></div></section>
+</div>
+<script>
+const questions=[
+  {
+    "type": "mcq",
+    "question": "What two wave properties are mainly discussed in the video?",
+    "options": [
+      "Amplitude and wavelength",
+      "Mass and density",
+      "Voltage and current"
+    ],
+    "answer": 0,
+    "explanation": "The video focuses on amplitude, wavelength, and how to label them on waves."
+  },
+  {
+    "type": "fill",
+    "question": "A wave is made up of ______.",
+    "answerText": "oscillations",
+    "explanation": "Waves are made up of oscillations that cause displacement from equilibrium."
+  },
+  {
+    "type": "mcq",
+    "question": "What is the equilibrium position of a wave?",
+    "options": [
+      "The central rest position",
+      "The highest point only",
+      "The distance between two peaks"
+    ],
+    "answer": 0,
+    "explanation": "The equilibrium position is the central position from which displacement is measured."
+  },
+  {
+    "type": "fill",
+    "question": "Displacement is measured from the ______ position.",
+    "answerText": "equilibrium",
+    "explanation": "Displacement tells how far and in what direction a point is from equilibrium."
+  },
+  {
+    "type": "mcq",
+    "question": "What type of quantity is displacement?",
+    "options": [
+      "Vector",
+      "Scalar",
+      "Neither"
+    ],
+    "answer": 0,
+    "explanation": "Displacement is a vector because it has size and direction."
+  },
+  {
+    "type": "fill",
+    "question": "A vector quantity needs both distance and ______.",
+    "answerText": "direction",
+    "explanation": "Vectors require magnitude and direction."
+  },
+  {
+    "type": "mcq",
+    "question": "Why can displacement be positive or negative?",
+    "options": [
+      "Because opposite directions are defined as positive and negative",
+      "Because waves have no direction",
+      "Because amplitude is always negative"
+    ],
+    "answer": 0,
+    "explanation": "One direction is chosen as positive and the opposite direction is negative."
+  },
+  {
+    "type": "fill",
+    "question": "On a displacement graph, displacement is usually placed on the ______-axis.",
+    "answerText": "y",
+    "explanation": "Displacement is shown on the y-axis."
+  },
+  {
+    "type": "mcq",
+    "question": "What can be shown on the x-axis of a displacement graph?",
+    "options": [
+      "Distance or time",
+      "Only mass",
+      "Only temperature"
+    ],
+    "answer": 0,
+    "explanation": "The x-axis can show distance in metres or time in seconds."
+  },
+  {
+    "type": "fill",
+    "question": "Displacement is measured in ______.",
+    "answerText": "meters",
+    "explanation": "Displacement is a distance, so it is measured in metres/meters."
+  },
+  {
+    "type": "mcq",
+    "question": "What is amplitude?",
+    "options": [
+      "The magnitude of maximum displacement from equilibrium",
+      "The total length of the graph",
+      "The time taken for one lesson"
+    ],
+    "answer": 0,
+    "explanation": "Amplitude is the magnitude of the maximum displacement from equilibrium."
+  },
+  {
+    "type": "fill",
+    "question": "Amplitude uses the magnitude of maximum ______.",
+    "answerText": "displacement",
+    "explanation": "Amplitude is based on maximum displacement from equilibrium."
+  },
+  {
+    "type": "mcq",
+    "question": "Can amplitude be measured from a trough to the equilibrium position?",
+    "options": [
+      "Yes",
+      "No",
+      "Only for electromagnetic waves"
+    ],
+    "answer": 0,
+    "explanation": "Amplitude can be measured from equilibrium to a peak or to a trough."
+  },
+  {
+    "type": "fill",
+    "question": "The highest points on a wave are called ______.",
+    "answerText": "peaks",
+    "explanation": "Peaks are points of maximum positive displacement."
+  },
+  {
+    "type": "mcq",
+    "question": "What are troughs?",
+    "options": [
+      "The lowest points on a wave",
+      "The middle line",
+      "The distance between two waves"
+    ],
+    "answer": 0,
+    "explanation": "Troughs are points of minimum displacement."
+  },
+  {
+    "type": "fill",
+    "question": "Amplitude is the distance from equilibrium to a peak or a ______.",
+    "answerText": "trough",
+    "explanation": "Amplitude is measured from equilibrium to either extreme."
+  },
+  {
+    "type": "mcq",
+    "question": "What does wavelength describe?",
+    "options": [
+      "The length of one oscillation",
+      "The height of a peak only",
+      "The mass of a wave"
+    ],
+    "answer": 0,
+    "explanation": "Wavelength is the length of one complete oscillation."
+  },
+  {
+    "type": "fill",
+    "question": "The symbol for wavelength is the Greek letter ______.",
+    "answerText": "lambda",
+    "explanation": "Wavelength is represented by lambda, λ."
+  },
+  {
+    "type": "mcq",
+    "question": "How can wavelength be found most simply?",
+    "options": [
+      "Measure between two adjacent peaks or two adjacent troughs",
+      "Measure from peak to equilibrium",
+      "Measure the wave height only"
+    ],
+    "answer": 0,
+    "explanation": "Adjacent peaks or troughs are at the same point in the wave cycle, so their distance is one wavelength."
+  },
+  {
+    "type": "fill",
+    "question": "Adjacent peaks have the same displacement and the same ______.",
+    "answerText": "velocity",
+    "explanation": "Wavelength is measured between adjacent points with the same displacement and velocity."
+  },
+  {
+    "type": "mcq",
+    "question": "What is the velocity at a peak or trough?",
+    "options": [
+      "Zero",
+      "Maximum upward",
+      "Maximum downward"
+    ],
+    "answer": 0,
+    "explanation": "At peaks and troughs, the velocity is zero."
+  },
+  {
+    "type": "fill",
+    "question": "One complete cycle of a wave is one ______.",
+    "answerText": "oscillation",
+    "explanation": "One oscillation is one complete repeating cycle of the wave."
+  },
+  {
+    "type": "mcq",
+    "question": "Which points are easiest to use for measuring wavelength?",
+    "options": [
+      "Two neighbouring peaks or troughs",
+      "Any two random points",
+      "A peak and the equilibrium line"
+    ],
+    "answer": 0,
+    "explanation": "Neighbouring peaks or troughs are simple because they are in adjacent cycles at the same phase."
+  },
+  {
+    "type": "fill",
+    "question": "A displacement-distance graph has distance on the ______-axis.",
+    "answerText": "x",
+    "explanation": "Distance is placed on the x-axis of a displacement-distance graph."
+  },
+  {
+    "type": "mcq",
+    "question": "What do peaks represent on a displacement graph?",
+    "options": [
+      "Points of highest displacement",
+      "Points of zero displacement",
+      "Points of shortest wavelength"
+    ],
+    "answer": 0,
+    "explanation": "Peaks are where the displacement is highest."
+  },
+  {
+    "type": "fill",
+    "question": "Troughs represent points of minimum ______.",
+    "answerText": "displacement",
+    "explanation": "Troughs are the lowest displacement points."
+  },
+  {
+    "type": "mcq",
+    "question": "If a peak is at 4 m and equilibrium is at 2 m, what is the amplitude?",
+    "options": [
+      "2 m",
+      "4 m",
+      "6 m"
+    ],
+    "answer": 0,
+    "explanation": "Amplitude = 4 m - 2 m = 2 m."
+  },
+  {
+    "type": "fill",
+    "question": "Amplitude is found by subtracting the equilibrium displacement from the ______ displacement.",
+    "answerText": "peak",
+    "explanation": "In the example, amplitude is found using peak displacement minus equilibrium displacement."
+  },
+  {
+    "type": "mcq",
+    "question": "If adjacent peaks are at 30 m and 70 m, what is the wavelength?",
+    "options": [
+      "40 m",
+      "30 m",
+      "100 m"
+    ],
+    "answer": 0,
+    "explanation": "Wavelength = 70 m - 30 m = 40 m."
+  },
+  {
+    "type": "fill",
+    "question": "In the example, the wavelength is ______ meters.",
+    "answerText": "40",
+    "explanation": "The distance between the two peaks is 40 m."
+  },
+  {
+    "type": "mcq",
+    "question": "Why is the distance between adjacent peaks a wavelength?",
+    "options": [
+      "They are one full cycle apart",
+      "They are always at equilibrium",
+      "They have opposite velocities"
+    ],
+    "answer": 0,
+    "explanation": "Adjacent peaks are separated by one complete wave cycle."
+  },
+  {
+    "type": "fill",
+    "question": "The distance from a peak to the equilibrium line gives the ______.",
+    "answerText": "amplitude",
+    "explanation": "Amplitude is measured from equilibrium to a peak or trough."
+  },
+  {
+    "type": "mcq",
+    "question": "What must two points have to be used for wavelength?",
+    "options": [
+      "Same displacement and same velocity",
+      "Different displacement and same mass",
+      "Same colour and size"
+    ],
+    "answer": 0,
+    "explanation": "Wavelength is the distance between adjacent points with the same displacement and velocity."
+  },
+  {
+    "type": "fill",
+    "question": "The lowest points of a wave are called ______.",
+    "answerText": "troughs",
+    "explanation": "The lowest points are troughs."
+  },
+  {
+    "type": "mcq",
+    "question": "If displacement is below the equilibrium line, it may be described as what?",
+    "options": [
+      "Negative displacement",
+      "Positive wavelength",
+      "Zero amplitude"
+    ],
+    "answer": 0,
+    "explanation": "A direction opposite to the positive direction is negative displacement."
+  },
+  {
+    "type": "fill",
+    "question": "The magnitude of -2 m displacement is ______ m.",
+    "answerText": "2",
+    "explanation": "Magnitude ignores the negative sign, so the magnitude of -2 m is 2 m."
+  },
+  {
+    "type": "mcq",
+    "question": "What does a horizontal line of constant displacement show?",
+    "options": [
+      "Points with the same displacement",
+      "Points with the same wavelength only",
+      "Only peak positions"
+    ],
+    "answer": 0,
+    "explanation": "A horizontal line can identify points with the same displacement."
+  },
+  {
+    "type": "fill",
+    "question": "Points with the same displacement may still have different ______ directions.",
+    "answerText": "velocity",
+    "explanation": "The video explains that same displacement does not always mean same velocity direction."
+  },
+  {
+    "type": "mcq",
+    "question": "What is the first step in the example problem?",
+    "options": [
+      "Label the equilibrium position and peaks",
+      "Calculate mass",
+      "Find the speed of light"
+    ],
+    "answer": 0,
+    "explanation": "The example begins by labeling the equilibrium position and peaks."
+  },
+  {
+    "type": "fill",
+    "question": "The amplitude and wavelength can both be found using the wave's ______.",
+    "answerText": "peaks",
+    "explanation": "Peaks help measure amplitude from equilibrium and wavelength between adjacent peaks."
+  }
+];
+let currentQuestion=0;let score=0;let shuffledQuestions=[];
+function startGame(){shuffledQuestions=[...questions].sort(()=>Math.random()-0.5);currentQuestion=0;score=0;showQuestion();}
+function showQuestion(){const gameArea=document.getElementById("game-area");const q=shuffledQuestions[currentQuestion];let html=`<div><p><strong>Question ${currentQuestion+1}:</strong> ${q.question}</p>`;if(q.type==="mcq"){q.options.forEach((opt,idx)=>{html+=`<label style="display:block"><input type="radio" name="opt" value="${idx}"> ${opt}</label>`;});html+=`<button class="btn" onclick="checkMCQ()">Submit</button>`;}else{html+=`<input id="fill" type="text" style="width:100%;padding:10px;margin:10px 0;">`;html+=`<button class="btn" onclick="checkFill()">Submit</button>`;}html+=`<div id="feedback"></div></div>`;gameArea.innerHTML=html;}
+function checkMCQ(){const q=shuffledQuestions[currentQuestion];const sel=document.querySelector('input[name="opt"]:checked');if(!sel)return;const feedback=document.getElementById("feedback");if(parseInt(sel.value)===q.answer){feedback.innerHTML=`<p class="correct">Correct! ${q.explanation}</p>`;score++;}else{feedback.innerHTML=`<p class="incorrect">Incorrect. ${q.explanation}</p>`;}setTimeout(nextQuestion,1200);}
+function checkFill(){const q=shuffledQuestions[currentQuestion];const ans=document.getElementById("fill").value.trim().toLowerCase();const feedback=document.getElementById("feedback");if(ans.includes(q.answerText)){feedback.innerHTML=`<p class="correct">Correct! ${q.explanation}</p>`;score++;}else{feedback.innerHTML=`<p class="incorrect">Incorrect. ${q.explanation}</p>`;}setTimeout(nextQuestion,1200);}
+function nextQuestion(){currentQuestion++;if(currentQuestion<shuffledQuestions.length){showQuestion();}else{document.getElementById("game-area").innerHTML=`<h3>Quiz Complete!</h3><p>Your score: ${score}/${shuffledQuestions.length}</p><button class="btn" onclick="startGame()">Try Again</button>`;}}
+</script>
+</body>
+</html>

@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase and Phase Difference</title>
+<style>
+:root{
+--brand:#0ea5e9;
+--ink:#1f2937;
+--paper:#fafafa;
+--card:#ffffff;
+--muted:#6b7280;
+--good:#16a34a;
+--bad:#dc2626;
+}
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+color:var(--ink);
+background:var(--paper);
+line-height:1.6;
+}
+header{
+background:linear-gradient(135deg,var(--brand),#6366f1);
+color:white;
+padding:20px 16px;
+text-align:center;
+}
+.wrap{max-width:1000px;margin:0 auto;padding:16px}
+.card{
+background:var(--card);
+border-radius:12px;
+padding:18px;
+box-shadow:0 6px 18px rgba(2,6,23,.08);
+margin:16px 0;
+}
+iframe{
+width:100%;
+max-width:900px;
+height:480px;
+border:0;
+border-radius:12px;
+}
+details{
+border:1px solid #e5e7eb;
+border-radius:10px;
+padding:10px 12px;
+margin:10px 0;
+background:#fff;
+}
+summary{
+font-weight:700;
+color:#0f766e;
+cursor:pointer;
+}
+.btn{
+background:var(--brand);
+color:white;
+border:0;
+border-radius:10px;
+padding:10px 14px;
+font-weight:700;
+cursor:pointer;
+}
+.correct{color:green}
+.incorrect{color:red}
+</style>
+</head>
+<body>
+
+<header>
+<h1>ALPHY2. Phase and Phase Difference</h1>
+</header>
+
+<div class="wrap">
+
+<div class="card">
+<iframe src="https://www.youtube.com/embed/AEttkWf08BA" allowfullscreen></iframe>
+</div>
+
+<section class="card">
+<h2>Key Notes (Synced with Video)</h2>
+
+<details open>
+<summary>0:00 - 1:00 | What Phase Means</summary>
+<ul>
+<li>Phase describes how much of a repeating cycle has been completed.</li>
+<li>A clock hand is a useful model: the phase can be measured from the 12 o&#x27;clock position.</li>
+<li>For example, a minute hand pointing at 3 has completed 15 minutes out of a 60-minute cycle.</li>
+<li>The same position can also be described as an angle of 90° or π/2 radians.</li>
+</ul>
+</details>
+<details>
+<summary>1:00 - 2:10 | Measuring Phase as an Angle</summary>
+<ul>
+<li>Measuring phase as an angle lets us compare different repeating motions using the same unit.</li>
+<li>An hour hand and a minute hand can have the same phase when they point to the same part of the clock, even if they took different amounts of time to get there.</li>
+<li>In waves, phase is usually measured as an angle because it describes position within a cycle.</li>
+</ul>
+</details>
+<details>
+<summary>2:10 - 3:25 | Phase Difference on Clocks</summary>
+<ul>
+<li>Phase difference is the difference between the phase angles of two repeating motions.</li>
+<li>If one minute hand has a phase of 90° and another has a phase of 30°, the phase difference is 60°.</li>
+<li>When two clocks&#x27; minute hands move at the same frequency, their phase difference stays constant over time.</li>
+<li>Phase difference is not constant for motions with different frequencies, such as a clock&#x27;s hour hand and minute hand.</li>
+</ul>
+</details>
+<details>
+<summary>3:25 - 4:40 | Linking Phase to Waves</summary>
+<ul>
+<li>A wave travels one wavelength during one complete oscillation.</li>
+<li>One full wave cycle is equivalent to one full revolution around a circle.</li>
+<li>Therefore, one complete oscillation has a phase of 360° or 2π radians.</li>
+<li>Half a cycle has a phase of 180° or π radians, and a quarter cycle has a phase of 90° or π/2 radians.</li>
+</ul>
+</details>
+<details>
+<summary>4:40 - 5:45 | Phase and Wavelength Fractions</summary>
+<ul>
+<li>Phase can be described using fractions of a wavelength.</li>
+<li>A quarter of a wavelength corresponds to a phase of 90°.</li>
+<li>Half a wavelength corresponds to 180°.</li>
+<li>One wavelength corresponds to 360° or 2π radians, and two wavelengths correspond to 720° or 4π radians.</li>
+</ul>
+</details>
+<details>
+<summary>5:45 - 7:00 | In Phase, Out of Phase, and Antiphase</summary>
+<ul>
+<li>Two oscillating points are in phase if they reach maximum positive displacement at the same time.</li>
+<li>They are out of phase if they reach the same stage of the oscillation at different times.</li>
+<li>They are in antiphase if one point reaches maximum positive displacement when the other reaches maximum negative displacement.</li>
+<li>Points on the same wave, or different waves with the same frequency, can be compared using these ideas.</li>
+</ul>
+</details>
+<details>
+<summary>7:00 - 8:20 | Comparing Waves with the Same Frequency</summary>
+<ul>
+<li>Phase comparison is most useful when waves have the same frequency.</li>
+<li>If two waves have the same time period, they also have the same frequency because frequency equals 1 divided by period.</li>
+<li>At a point of intersection, waves are in phase if they stay at the same stage of oscillation as time passes.</li>
+<li>Waves are in antiphase if they remain half an oscillation apart.</li>
+</ul>
+</details>
+<details>
+<summary>8:20 - 9:25 | Overlapping Waves in Space</summary>
+<ul>
+<li>When overlapping waves travel in the same direction and are in phase, their peaks, troughs, and zero-displacement points align.</li>
+<li>Out-of-phase waves do not align perfectly in space.</li>
+<li>In antiphase, the peaks of one wave align with the troughs of the other wave.</li>
+<li>This spatial alignment helps identify whether waves are in phase, out of phase, or in antiphase.</li>
+</ul>
+</details>
+<details>
+<summary>9:25 - 10:40 | Calculating Phase Difference</summary>
+<ul>
+<li>The phase difference between two points on the same wave depends on the distance between them.</li>
+<li>To calculate phase difference in degrees, use: phase difference = (d ÷ λ) × 360°.</li>
+<li>To calculate phase difference in radians, use: phase difference = (d ÷ λ) × 2π.</li>
+<li>If two points are separated by one wavelength, their phase difference is 360° or 2π radians.</li>
+</ul>
+</details>
+
+</section>
+
+<section class="card">
+<h2>Quiz (40 Questions)</h2>
+<div id="game-area">
+<button class="btn" onclick="startGame()">Start Quiz</button>
+</div>
+</section>
+
+</div>
+
+<script>
+const questions=[
+  {
+    "type": "mcq",
+    "question": "What does phase describe?",
+    "options": [
+      "The portion of a cycle that has been completed",
+      "The height of a wave only",
+      "The mass of an object"
+    ],
+    "answer": 0,
+    "explanation": "Phase tells us how far through a repeating cycle a point or motion is."
+  },
+  {
+    "type": "fill",
+    "question": "Phase can be measured as an ______.",
+    "answerText": "angle",
+    "explanation": "In waves, phase is commonly measured as an angle."
+  },
+  {
+    "type": "mcq",
+    "question": "From which clock position is phase measured in the video example?",
+    "options": [
+      "12 o'clock",
+      "3 o'clock",
+      "6 o'clock"
+    ],
+    "answer": 0,
+    "explanation": "The clock phase is measured from 12 o'clock."
+  },
+  {
+    "type": "fill",
+    "question": "A minute hand at 3 o'clock has completed ______ minutes of a 60-minute cycle.",
+    "answerText": "15",
+    "explanation": "Moving from 12 to 3 is 15 minutes out of 60."
+  },
+  {
+    "type": "mcq",
+    "question": "What angle corresponds to the minute hand pointing at 3 o'clock?",
+    "options": [
+      "90°",
+      "180°",
+      "360°"
+    ],
+    "answer": 0,
+    "explanation": "The angle from 12 o'clock to 3 o'clock is 90°."
+  },
+  {
+    "type": "fill",
+    "question": "90° is equal to ______ radians.",
+    "answerText": "pi/2",
+    "explanation": "A quarter turn is π/2 radians."
+  },
+  {
+    "type": "mcq",
+    "question": "Why is phase usually measured as an angle for waves?",
+    "options": [
+      "It allows different cycles to be compared using the same unit",
+      "It removes wavelength from waves",
+      "It measures wave speed directly"
+    ],
+    "answer": 0,
+    "explanation": "Angles provide a common way to describe position within a cycle."
+  },
+  {
+    "type": "fill",
+    "question": "Phase difference is the difference between two phase ______.",
+    "answerText": "angles",
+    "explanation": "Phase difference compares the phase angles of two motions or points."
+  },
+  {
+    "type": "mcq",
+    "question": "If two phases are 90° and 30°, what is the phase difference?",
+    "options": [
+      "60°",
+      "90°",
+      "120°"
+    ],
+    "answer": 0,
+    "explanation": "90° - 30° = 60°."
+  },
+  {
+    "type": "fill",
+    "question": "Two minute hands moving at the same rate have the same ______.",
+    "answerText": "frequency",
+    "explanation": "They complete the same cycle in the same time."
+  },
+  {
+    "type": "mcq",
+    "question": "What happens to phase difference when two motions have the same frequency?",
+    "options": [
+      "It stays constant",
+      "It always becomes zero",
+      "It cannot be measured"
+    ],
+    "answer": 0,
+    "explanation": "If both motions progress at the same rate, their phase difference remains constant."
+  },
+  {
+    "type": "fill",
+    "question": "Frequency is the inverse of ______.",
+    "answerText": "period",
+    "explanation": "Frequency = 1 / time period."
+  },
+  {
+    "type": "mcq",
+    "question": "Why can the hour hand and minute hand not have a constant phase difference?",
+    "options": [
+      "They have different frequencies",
+      "They have no phase",
+      "They have equal periods"
+    ],
+    "answer": 0,
+    "explanation": "Their frequencies are different, so their phase difference changes over time."
+  },
+  {
+    "type": "fill",
+    "question": "One complete oscillation of a wave covers one ______.",
+    "answerText": "wavelength",
+    "explanation": "The wavelength is the distance travelled in one oscillation."
+  },
+  {
+    "type": "mcq",
+    "question": "What does one full revolution around a circle represent for a wave?",
+    "options": [
+      "One oscillation",
+      "Half an oscillation",
+      "No oscillation"
+    ],
+    "answer": 0,
+    "explanation": "A full circle is used to model one complete wave cycle."
+  },
+  {
+    "type": "fill",
+    "question": "One full wave cycle has a phase of ______ degrees.",
+    "answerText": "360",
+    "explanation": "A complete cycle corresponds to 360°."
+  },
+  {
+    "type": "mcq",
+    "question": "What is the phase of one full cycle in radians?",
+    "options": [
+      "2π",
+      "π",
+      "π/2"
+    ],
+    "answer": 0,
+    "explanation": "360° is equal to 2π radians."
+  },
+  {
+    "type": "fill",
+    "question": "Half a cycle has a phase of ______ degrees.",
+    "answerText": "180",
+    "explanation": "Half of 360° is 180°."
+  },
+  {
+    "type": "mcq",
+    "question": "What is the phase of half a cycle in radians?",
+    "options": [
+      "π",
+      "2π",
+      "4π"
+    ],
+    "answer": 0,
+    "explanation": "Half a cycle is π radians."
+  },
+  {
+    "type": "fill",
+    "question": "A quarter cycle has a phase of π/______ radians.",
+    "answerText": "2",
+    "explanation": "A quarter cycle is π/2 radians."
+  },
+  {
+    "type": "mcq",
+    "question": "What phase in degrees corresponds to two full cycles?",
+    "options": [
+      "720°",
+      "360°",
+      "180°"
+    ],
+    "answer": 0,
+    "explanation": "Two cycles are 2 × 360° = 720°."
+  },
+  {
+    "type": "fill",
+    "question": "Two full cycles correspond to ______π radians.",
+    "answerText": "4",
+    "explanation": "Two cycles are 4π radians."
+  },
+  {
+    "type": "mcq",
+    "question": "Why are radians often preferred over degrees for phase?",
+    "options": [
+      "They avoid very large numbers after many oscillations",
+      "They make waves slower",
+      "They remove frequency"
+    ],
+    "answer": 0,
+    "explanation": "Radians often keep phase values more manageable."
+  },
+  {
+    "type": "fill",
+    "question": "A quarter wavelength corresponds to a phase of ______ degrees.",
+    "answerText": "90",
+    "explanation": "A quarter of a cycle is 90°."
+  },
+  {
+    "type": "mcq",
+    "question": "When are two points said to oscillate in phase?",
+    "options": [
+      "When they reach maximum positive displacement at the same time",
+      "When one is positive and the other is negative",
+      "When they have different frequencies"
+    ],
+    "answer": 0,
+    "explanation": "In-phase points are at the same stage of oscillation together."
+  },
+  {
+    "type": "fill",
+    "question": "Two points are out of phase if they reach maximum positive displacement at different ______.",
+    "answerText": "times",
+    "explanation": "Out-of-phase points do not reach the same stage together."
+  },
+  {
+    "type": "mcq",
+    "question": "What does antiphase mean?",
+    "options": [
+      "One point is at maximum positive displacement while the other is at maximum negative displacement",
+      "Both points are at maximum positive displacement",
+      "Both points have zero frequency"
+    ],
+    "answer": 0,
+    "explanation": "Antiphase means the points are half a cycle apart."
+  },
+  {
+    "type": "fill",
+    "question": "In antiphase, two points are half an ______ out of phase.",
+    "answerText": "oscillation",
+    "explanation": "Antiphase corresponds to a half-cycle difference."
+  },
+  {
+    "type": "mcq",
+    "question": "What must two waves have to compare phase difference reliably over time?",
+    "options": [
+      "The same frequency",
+      "Different periods",
+      "Different units"
+    ],
+    "answer": 0,
+    "explanation": "A constant phase relationship requires the same frequency."
+  },
+  {
+    "type": "fill",
+    "question": "If two waves have the same time period, they have the same ______.",
+    "answerText": "frequency",
+    "explanation": "Frequency depends on time period."
+  },
+  {
+    "type": "mcq",
+    "question": "When overlapping waves are in phase, what aligns?",
+    "options": [
+      "Peaks, troughs, and zero-displacement points",
+      "Only wavelengths",
+      "Only amplitudes"
+    ],
+    "answer": 0,
+    "explanation": "In-phase overlapping waves line up at every corresponding point."
+  },
+  {
+    "type": "fill",
+    "question": "Out-of-phase overlapping waves do not align perfectly in ______.",
+    "answerText": "space",
+    "explanation": "Their peaks and troughs are shifted relative to each other."
+  },
+  {
+    "type": "mcq",
+    "question": "In antiphase, what aligns with the peak of one wave?",
+    "options": [
+      "The trough of the other wave",
+      "The peak of the other wave",
+      "The origin only"
+    ],
+    "answer": 0,
+    "explanation": "Antiphase means peaks align with troughs."
+  },
+  {
+    "type": "fill",
+    "question": "Phase difference between two points depends on the distance between them and the ______.",
+    "answerText": "wavelength",
+    "explanation": "The formula uses d and λ."
+  },
+  {
+    "type": "mcq",
+    "question": "Which formula gives phase difference in degrees?",
+    "options": [
+      "(d ÷ λ) × 360°",
+      "(λ ÷ d) × 360°",
+      "d × λ × 360°"
+    ],
+    "answer": 0,
+    "explanation": "Phase difference in degrees equals (d/λ) × 360°."
+  },
+  {
+    "type": "fill",
+    "question": "In the phase difference formula, d means the ______ between two points.",
+    "answerText": "distance",
+    "explanation": "d is the separation between the two points."
+  },
+  {
+    "type": "mcq",
+    "question": "Which formula gives phase difference in radians?",
+    "options": [
+      "(d ÷ λ) × 2π",
+      "(λ ÷ d) × 2π",
+      "d × λ × 2π"
+    ],
+    "answer": 0,
+    "explanation": "Phase difference in radians equals (d/λ) × 2π."
+  },
+  {
+    "type": "fill",
+    "question": "The symbol λ represents the ______ of the wave.",
+    "answerText": "wavelength",
+    "explanation": "Lambda, λ, is wavelength."
+  },
+  {
+    "type": "mcq",
+    "question": "If two points are separated by one wavelength, what is their phase difference?",
+    "options": [
+      "360° or 2π radians",
+      "180° or π radians",
+      "90° or π/2 radians"
+    ],
+    "answer": 0,
+    "explanation": "A separation of one wavelength equals one full cycle."
+  },
+  {
+    "type": "fill",
+    "question": "A phase difference of 2π radians means one point is one whole ______ ahead of the other.",
+    "answerText": "cycle",
+    "explanation": "2π radians represents one complete cycle."
+  }
+];
+
+let currentQuestion=0;
+let score=0;
+let shuffledQuestions=[];
+
+function startGame(){
+shuffledQuestions=[...questions].sort(()=>Math.random()-0.5);
+currentQuestion=0;
+score=0;
+showQuestion();
+}
+
+function showQuestion(){
+const gameArea=document.getElementById("game-area");
+const q=shuffledQuestions[currentQuestion];
+let html=`<div><p><strong>Question ${currentQuestion+1}:</strong> ${q.question}</p>`;
+
+if(q.type==="mcq"){
+q.options.forEach((opt,idx)=>{
+html+=`<label style="display:block"><input type="radio" name="opt" value="${idx}"> ${opt}</label>`;
+});
+html+=`<button class="btn" onclick="checkMCQ()">Submit</button>`;
+}else{
+html+=`<input id="fill" type="text" style="width:100%;padding:10px;margin:10px 0;">`;
+html+=`<button class="btn" onclick="checkFill()">Submit</button>`;
+}
+
+html+=`<div id="feedback"></div></div>`;
+gameArea.innerHTML=html;
+}
+
+function checkMCQ(){
+const q=shuffledQuestions[currentQuestion];
+const sel=document.querySelector('input[name="opt"]:checked');
+if(!sel)return;
+
+const feedback=document.getElementById("feedback");
+
+if(parseInt(sel.value)===q.answer){
+feedback.innerHTML=`<p class="correct">Correct! ${q.explanation}</p>`;
+score++;
+}else{
+feedback.innerHTML=`<p class="incorrect">Incorrect. ${q.explanation}</p>`;
+}
+
+setTimeout(nextQuestion,1200);
+}
+
+function checkFill(){
+const q=shuffledQuestions[currentQuestion];
+const ans=document.getElementById("fill").value.trim().toLowerCase();
+const feedback=document.getElementById("feedback");
+
+if(ans.includes(q.answerText)){
+feedback.innerHTML=`<p class="correct">Correct! ${q.explanation}</p>`;
+score++;
+}else{
+feedback.innerHTML=`<p class="incorrect">Incorrect. ${q.explanation}</p>`;
+}
+
+setTimeout(nextQuestion,1200);
+}
+
+function nextQuestion(){
+currentQuestion++;
+if(currentQuestion<shuffledQuestions.length){
+showQuestion();
+}else{
+document.getElementById("game-area").innerHTML=`<h3>Quiz Complete!</h3><p>Your score: ${score}/${shuffledQuestions.length}</p><button class="btn" onclick="startGame()">Try Again</button>`;
+}
+}
+</script>
+
+</body>
+</html>

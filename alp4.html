@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plane Polarisation</title>
+<style>
+:root{
+--brand:#0ea5e9;
+--ink:#1f2937;
+--paper:#fafafa;
+--card:#ffffff;
+--muted:#6b7280;
+--good:#16a34a;
+--bad:#dc2626;
+}
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+color:var(--ink);
+background:var(--paper);
+line-height:1.6;
+}
+header{
+background:linear-gradient(135deg,var(--brand),#6366f1);
+color:white;
+padding:20px 16px;
+text-align:center;
+}
+.wrap{max-width:1000px;margin:0 auto;padding:16px}
+.card{
+background:var(--card);
+border-radius:12px;
+padding:18px;
+box-shadow:0 6px 18px rgba(2,6,23,.08);
+margin:16px 0;
+}
+iframe{
+width:100%;
+max-width:900px;
+height:480px;
+border:0;
+border-radius:12px;
+}
+details{
+border:1px solid #e5e7eb;
+border-radius:10px;
+padding:10px 12px;
+margin:10px 0;
+background:#fff;
+}
+summary{
+font-weight:700;
+color:#0f766e;
+cursor:pointer;
+}
+.btn{
+background:var(--brand);
+color:white;
+border:0;
+border-radius:10px;
+padding:10px 14px;
+font-weight:700;
+cursor:pointer;
+}
+.correct{color:green}
+.incorrect{color:red}
+</style>
+</head>
+<body>
+
+<header>
+<h1>ALPHY4. Plane Polarisation</h1>
+</header>
+
+<div class="wrap">
+
+<div class="card">
+<iframe src="https://www.youtube.com/embed/bN-_EdhiQuE?si=QMhZr-fOCrQLMwmt" allowfullscreen></iframe>
+</div>
+
+<section class="card">
+<h2>Key Notes (Synced with Video)</h2>
+
+<details open>
+<summary>Transverse Waves and Direction</summary>
+<ul>
+<li>In a transverse wave, the direction of oscillation is perpendicular to the direction of propagation.</li>
+<li>A wave may travel in either of two opposite directions, but its propagation must remain perpendicular to its oscillation.</li>
+<li>When the wave travels into or out of the screen, its oscillation can occur at many angles within the plane of the screen.</li>
+</ul>
+</details>
+<details>
+<summary>Understanding Plane Polarisation</summary>
+<ul>
+<li>Polarisation describes the plane in which a transverse wave oscillates.</li>
+<li>The plane of polarisation is perpendicular to the direction of propagation.</li>
+<li>A wave is plane polarised, or linearly polarised, when its oscillation remains in one plane.</li>
+<li>A wave oscillating in more than one plane is unpolarised.</li>
+</ul>
+</details>
+<details>
+<summary>Polarising a Wave Through a Slit</summary>
+<ul>
+<li>A wave on a rope passing through a slit provides a useful model of polarisation.</li>
+<li>An unpolarised transverse wave contains oscillations in many directions.</li>
+<li>After passing through a slit, only the oscillation parallel to the slit is transmitted.</li>
+<li>The transmitted wave is therefore linearly polarised.</li>
+</ul>
+</details>
+<details>
+<summary>Parallel and Perpendicular Orientations</summary>
+<ul>
+<li>If the slit is parallel to the plane of polarisation, the wave passes through unaffected.</li>
+<li>If the slit is perpendicular to the plane of polarisation, the wave is blocked.</li>
+<li>These results show that transmission depends on the relative orientation of the wave and the slit.</li>
+</ul>
+</details>
+<details>
+<summary>Polarisation at an Intermediate Angle</summary>
+<ul>
+<li>If the wave has a component parallel to the slit, that component can pass through.</li>
+<li>After transmission, the new plane of polarisation is parallel to the slit.</li>
+<li>Only part of the original wave is transmitted, so its amplitude is reduced.</li>
+<li>A lower amplitude produces a lower transmitted intensity.</li>
+</ul>
+</details>
+<details>
+<summary>Polarising Filters</summary>
+<ul>
+<li>All transverse waves follow the same basic polarisation rules.</li>
+<li>In practice, polarising filters are commonly used to produce linearly polarised waves.</li>
+<li>An unpolarised wave becomes linearly polarised after passing through a suitable filter.</li>
+</ul>
+</details>
+<details>
+<summary>Electromagnetic Waves and Filter Molecules</summary>
+<ul>
+<li>Polarising filters contain long chains of organic molecules.</li>
+<li>These molecules absorb electromagnetic-field components parallel to the molecular chains.</li>
+<li>The transmitted plane of polarisation is therefore perpendicular to the lines representing the molecules on the filter.</li>
+<li>The filter lines indicate the absorption direction, not the transmitted polarisation direction.</li>
+</ul>
+</details>
+
+</section>
+
+<section class="card">
+<h2>Quiz (40 Questions)</h2>
+<div id="game-area">
+<button class="btn" onclick="startGame()">Start Quiz</button>
+</div>
+</section>
+
+</div>
+
+<script>
+const questions=[
+  {"type":"mcq","question":"What type of wave can be polarised?","options":["A transverse wave","A longitudinal wave only","A stationary object"],"answer":0,"explanation":"Polarisation is a property of transverse waves."},
+  {"type":"mcq","question":"How is the direction of oscillation related to the direction of propagation in a transverse wave?","options":["They are perpendicular","They are parallel","They are identical"],"answer":0,"explanation":"A transverse wave oscillates perpendicular to its direction of travel."},
+  {"type":"mcq","question":"If a wave propagates out of the screen, where may its oscillations lie?","options":["In the plane of the screen","Only along the propagation direction","Outside every perpendicular plane"],"answer":0,"explanation":"All allowed transverse oscillations lie in the plane perpendicular to propagation."},
+  {"type":"mcq","question":"Can a transverse wave have several possible directions of oscillation for one propagation direction?","options":["Yes","No","Only when it stops"],"answer":0,"explanation":"Many oscillation directions can be perpendicular to the same propagation direction."},
+  {"type":"mcq","question":"What does polarisation describe?","options":["The plane in which a transverse wave oscillates","The speed of a wave","The wavelength only"],"answer":0,"explanation":"Polarisation identifies the plane of oscillation."},
+  {"type":"mcq","question":"What does the polarisation arrow in the video represent?","options":["The plane of polarisation","The wave speed","The frequency"],"answer":0,"explanation":"The arrow marks the wave's plane of polarisation."},
+  {"type":"mcq","question":"What condition makes a wave plane polarised?","options":["Its oscillation remains in one plane","Its oscillation stops","It travels in several directions"],"answer":0,"explanation":"A fixed oscillation plane defines plane polarisation."},
+  {"type":"mcq","question":"What is another name for plane polarisation?","options":["Linear polarisation","Circular propagation","Longitudinal polarisation"],"answer":0,"explanation":"Plane-polarised waves are also called linearly polarised waves."},
+  {"type":"mcq","question":"When is a wave unpolarised?","options":["When it oscillates in more than one plane","When it has one fixed oscillation plane","When it has no energy"],"answer":0,"explanation":"An unpolarised wave has multiple oscillation planes."},
+  {"type":"mcq","question":"In the rope model, what is used to polarise the wave?","options":["A slit","A mirror","A spring balance"],"answer":0,"explanation":"A slit selects one oscillation direction."},
+  {"type":"mcq","question":"Before passing through the slit, how does the model wave oscillate?","options":["In many directions","In no direction","Only parallel to propagation"],"answer":0,"explanation":"The incident wave is unpolarised and oscillates in several directions."},
+  {"type":"mcq","question":"What happens to an unpolarised transverse wave after it passes through a slit?","options":["It becomes linearly polarised","It becomes longitudinal","Its propagation reverses"],"answer":0,"explanation":"The slit transmits one oscillation direction."},
+  {"type":"mcq","question":"Which oscillation direction is transmitted by the slit?","options":["The component parallel to the slit","The component perpendicular to the slit","The component parallel to propagation"],"answer":0,"explanation":"The slit allows the parallel oscillation component through."},
+  {"type":"mcq","question":"What happens when the slit is parallel to the plane of polarisation?","options":["The wave passes through unaffected","The wave is completely blocked","The wave becomes longitudinal"],"answer":0,"explanation":"A matching orientation transmits the polarised wave."},
+  {"type":"mcq","question":"Does the oscillation direction change when a polarised wave passes through a parallel slit?","options":["No","Yes, by 90 degrees","Yes, it becomes random"],"answer":0,"explanation":"The wave passes through without a change in oscillation direction."},
+  {"type":"mcq","question":"What happens when the slit is perpendicular to the plane of polarisation?","options":["The wave is blocked","The wave passes unaffected","The amplitude doubles"],"answer":0,"explanation":"There is no oscillation component parallel to the slit."},
+  {"type":"mcq","question":"Why can no wave pass through a perpendicular slit?","options":["There is no component parallel to the slit","The wavelength becomes zero","The frequency becomes infinite"],"answer":0,"explanation":"Only a component parallel to the slit can be transmitted."},
+  {"type":"mcq","question":"What happens if the plane of polarisation is at an intermediate angle to the slit?","options":["Part of the wave passes through","The entire wave is always blocked","The wave becomes unpolarised"],"answer":0,"explanation":"The parallel component is transmitted."},
+  {"type":"mcq","question":"After angled transmission, what is the new plane of polarisation?","options":["Parallel to the slit","Perpendicular to the slit","Parallel to propagation"],"answer":0,"explanation":"The transmitted component oscillates along the slit."},
+  {"type":"mcq","question":"How does the transmitted amplitude compare with the original at an intermediate angle?","options":["It is smaller","It is always larger","It is unchanged at every angle"],"answer":0,"explanation":"Only part of the original oscillation is transmitted."},
+  {"type":"mcq","question":"What happens to intensity when amplitude is reduced?","options":["Intensity decreases","Intensity increases","Intensity is always zero"],"answer":0,"explanation":"A smaller transmitted amplitude gives a smaller intensity."},
+  {"type":"mcq","question":"Why is the transmitted wave weaker at an intermediate angle?","options":["Only the parallel component is transmitted","The slit creates extra frequency","Propagation becomes parallel to oscillation"],"answer":0,"explanation":"The slit removes the non-parallel component."},
+  {"type":"mcq","question":"Do the slit rules apply only to waves on ropes?","options":["No, they apply to all transverse waves","Yes, only ropes can be polarised","Yes, only mechanical waves can be polarised"],"answer":0,"explanation":"The rope is a model for the behaviour of all transverse waves."},
+  {"type":"mcq","question":"What device is generally used to polarise transverse waves?","options":["A polarising filter","A thermometer","A voltmeter"],"answer":0,"explanation":"Polarising filters select a single plane of oscillation."},
+  {"type":"mcq","question":"What is the state of a wave before entering the first polarising filter in the example?","options":["Unpolarised","Linearly polarised","Longitudinal"],"answer":0,"explanation":"The incident wave contains many planes of oscillation."},
+  {"type":"mcq","question":"What is the state of the wave after passing through a suitable polarising filter?","options":["Linearly polarised","Unpolarised","Stationary"],"answer":0,"explanation":"The filter leaves one plane of oscillation."},
+  {"type":"mcq","question":"What are electromagnetic polarising filters made from according to the speech?","options":["Long chains of organic molecules","Short metal springs","Layers of water"],"answer":0,"explanation":"The filter contains aligned long-chain organic molecules."},
+  {"type":"mcq","question":"Which electromagnetic-field components do the molecules absorb?","options":["Components parallel to the molecules","Components perpendicular to the molecules","All components equally"],"answer":0,"explanation":"Components parallel to the molecular chains are absorbed."},
+  {"type":"mcq","question":"What do the drawn lines on the polarising filter indicate?","options":["The absorption direction","The transmitted propagation direction","The wavelength"],"answer":0,"explanation":"The lines represent the molecular direction that absorbs parallel components."},
+  {"type":"mcq","question":"How is the transmitted polarisation direction related to the filter lines in the diagram?","options":["It is perpendicular","It is parallel","It is unrelated"],"answer":0,"explanation":"The parallel component is absorbed, leaving the perpendicular component."},
+  {"type":"mcq","question":"Is the plane of polarisation perpendicular to the direction of propagation?","options":["Yes","No","Only for longitudinal waves"],"answer":0,"explanation":"The oscillation plane of a transverse wave is perpendicular to propagation."},
+  {"type":"mcq","question":"Which statement best defines a transverse wave?","options":["Oscillation is perpendicular to propagation","Oscillation is parallel to propagation","It has no direction of propagation"],"answer":0,"explanation":"Perpendicular oscillation and propagation define a transverse wave."},
+  {"type":"mcq","question":"If the wave comes towards the observer, which way is it propagating in the screen model?","options":["Out of the screen","Up the screen","Along the slit only"],"answer":0,"explanation":"Coming towards the observer is represented as propagation out of the screen."},
+  {"type":"mcq","question":"Can the direction of oscillation of an unpolarised transverse wave change with time?","options":["Yes","No","Only if propagation stops"],"answer":0,"explanation":"Different oscillation orientations may occur at different times."},
+  {"type":"mcq","question":"What remains fixed in a linearly polarised wave?","options":["The plane of oscillation","Every particle's position","The direction of energy transfer and oscillation as one line"],"answer":0,"explanation":"Linear polarisation keeps oscillation in one plane."},
+  {"type":"mcq","question":"What determines how much of an angled polarised wave passes through a slit?","options":["Its component parallel to the slit","Its component along propagation","Its colour alone"],"answer":0,"explanation":"Transmission comes from the oscillation component aligned with the slit."},
+  {"type":"mcq","question":"Which slit orientation gives maximum transmission for a linearly polarised wave?","options":["Parallel to its plane of polarisation","Perpendicular to its plane of polarisation","Any orientation gives the same result"],"answer":0,"explanation":"Parallel alignment transmits the wave unaffected."},
+  {"type":"mcq","question":"Which slit orientation gives zero transmission in the model?","options":["Perpendicular to the plane of polarisation","Parallel to the plane of polarisation","At a small non-zero angle"],"answer":0,"explanation":"Perpendicular alignment blocks the wave."},
+  {"type":"mcq","question":"Why is polarisation evidence that a wave is transverse?","options":["Only transverse waves have perpendicular oscillation directions that can be selected","Only transverse waves travel forward","Transverse waves have no amplitude"],"answer":0,"explanation":"Polarisation selects among oscillation directions perpendicular to propagation."},
+  {"type":"mcq","question":"What is the main result of passing an unpolarised wave through one polarising element?","options":["Many oscillation planes are reduced to one","The wave changes into matter","The propagation direction must reverse"],"answer":0,"explanation":"A polarising element produces a single transmitted oscillation plane."}
+];
+
+let currentQuestion=0;
+let score=0;
+let shuffledQuestions=[];
+
+function startGame(){
+shuffledQuestions=[...questions].sort(()=>Math.random()-0.5);
+currentQuestion=0;
+score=0;
+showQuestion();
+}
+
+function showQuestion(){
+const gameArea=document.getElementById("game-area");
+const q=shuffledQuestions[currentQuestion];
+let html=`<div><p><strong>Question ${currentQuestion+1}:</strong> ${q.question}</p>`;
+
+if(q.type==="mcq"){
+q.options.forEach((opt,idx)=>{
+html+=`<label style="display:block"><input type="radio" name="opt" value="${idx}"> ${opt}</label>`;
+});
+html+=`<button class="btn" onclick="checkMCQ()">Submit</button>`;
+}else{
+html+=`<input id="fill" type="text" style="width:100%;padding:10px;margin:10px 0;">`;
+html+=`<button class="btn" onclick="checkFill()">Submit</button>`;
+}
+
+html+=`<div id="feedback"></div></div>`;
+gameArea.innerHTML=html;
+}
+
+function checkMCQ(){
+const q=shuffledQuestions[currentQuestion];
+const sel=document.querySelector('input[name="opt"]:checked');
+if(!sel)return;
+
+const feedback=document.getElementById("feedback");
+
+if(parseInt(sel.value)===q.answer){
+feedback.innerHTML=`<p class="correct">Correct! ${q.explanation}</p>`;
+score++;
+}else{
+feedback.innerHTML=`<p class="incorrect">Incorrect. ${q.explanation}</p>`;
+}
+
+setTimeout(nextQuestion,1200);
+}
+
+function checkFill(){
+const q=shuffledQuestions[currentQuestion];
+const ans=document.getElementById("fill").value.trim().toLowerCase();
+const feedback=document.getElementById("feedback");
+
+if(ans.includes(q.answerText)){
+feedback.innerHTML=`<p class="correct">Correct! ${q.explanation}</p>`;
+score++;
+}else{
+feedback.innerHTML=`<p class="incorrect">Incorrect. ${q.explanation}</p>`;
+}
+
+setTimeout(nextQuestion,1200);
+}
+
+function nextQuestion(){
+currentQuestion++;
+if(currentQuestion<shuffledQuestions.length){
+showQuestion();
+}else{
+document.getElementById("game-area").innerHTML=`<h3>Quiz Complete!</h3><p>Your score: ${score}/${shuffledQuestions.length}</p><button class="btn" onclick="startGame()">Try Again</button>`;
+}
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stationary Waves</title>
+<style>
+:root{
+--brand:#0ea5e9;
+--ink:#1f2937;
+--paper:#fafafa;
+--card:#ffffff;
+--muted:#6b7280;
+--good:#16a34a;
+--bad:#dc2626;
+}
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+color:var(--ink);
+background:var(--paper);
+line-height:1.6;
+}
+header{
+background:linear-gradient(135deg,var(--brand),#6366f1);
+color:white;
+padding:20px 16px;
+text-align:center;
+}
+.wrap{max-width:1000px;margin:0 auto;padding:16px}
+.card{
+background:var(--card);
+border-radius:12px;
+padding:18px;
+box-shadow:0 6px 18px rgba(2,6,23,.08);
+margin:16px 0;
+}
+iframe{
+width:100%;
+max-width:900px;
+height:480px;
+border:0;
+border-radius:12px;
+}
+details{
+border:1px solid #e5e7eb;
+border-radius:10px;
+padding:10px 12px;
+margin:10px 0;
+background:#fff;
+}
+summary{
+font-weight:700;
+color:#0f766e;
+cursor:pointer;
+}
+.btn{
+background:var(--brand);
+color:white;
+border:0;
+border-radius:10px;
+padding:10px 14px;
+font-weight:700;
+cursor:pointer;
+}
+.correct{color:green}
+.incorrect{color:red}
+</style>
+</head>
+<body>
+
+<header>
+<h1>84B. Stationary Waves</h1>
+</header>
+
+<div class="wrap">
+
+<div class="card">
+<iframe src="https://www.youtube.com/embed/x9gacaPeQ6s?si=JTDfBqXbjQ4o9NO9" allowfullscreen></iframe>
+</div>
+
+<section class="card">
+<h2>Key Notes (Synced with Video)</h2>
+
+<details open>
+<summary>Formation of Stationary Waves</summary>
+<ul>
+<li>A stationary wave, also called a standing wave, forms when two progressive waves superpose while travelling in opposite directions.</li>
+<li>The two progressive waves must have the same frequency; in the ideal case they also have equal amplitude.</li>
+<li>On a rope, both waves oscillate perpendicular to the undisturbed rope while propagating in opposite directions.</li>
+<li>The resulting pattern remains in a fixed position instead of travelling along the medium.</li>
+</ul>
+</details>
+<details>
+<summary>Stationary and Progressive Waves</summary>
+<ul>
+<li>A progressive wave moves through space as it oscillates.</li>
+<li>In a stationary wave, peaks and troughs do not propagate along the medium.</li>
+<li>A fixed point on the stationary wave changes displacement with time.</li>
+<li>At the same position, a peak can become a trough after half an oscillation.</li>
+</ul>
+</details>
+<details>
+<summary>Superposition and Resultant Displacement</summary>
+<ul>
+<li>The resultant displacement is the vector sum of the displacements of the two progressive waves.</li>
+<li>When the waves are in phase, their displacements act in the same direction and add together.</li>
+<li>In-phase alignment produces maximum constructive interference.</li>
+<li>If two equal-amplitude waves are in antiphase, opposite displacements cancel and the resultant displacement is zero.</li>
+</ul>
+</details>
+<details>
+<summary>Oscillation of a Point</summary>
+<ul>
+<li>A non-node point oscillates between positive and negative displacement.</li>
+<li>Starting at maximum positive displacement, it reaches zero after one quarter of an oscillation.</li>
+<li>It reaches maximum negative displacement after another quarter, completing half an oscillation.</li>
+<li>It then passes through zero and returns to maximum positive displacement to complete one full oscillation.</li>
+</ul>
+</details>
+<details>
+<summary>Nodes</summary>
+<ul>
+<li>Nodes are fixed points where the resultant displacement is always zero.</li>
+<li>The positions of the nodes do not change as the stationary wave oscillates.</li>
+<li>Destructive interference occurs continuously at each node.</li>
+<li>Fixed ends of a taut rope are nodes because they cannot move.</li>
+</ul>
+</details>
+<details>
+<summary>Antinodes</summary>
+<ul>
+<li>Antinodes are points that oscillate with maximum displacement.</li>
+<li>Each antinode lies midway between two adjacent nodes.</li>
+<li>An antinode alternates between maximum positive and maximum negative displacement.</li>
+<li>Nodes should be identified first when marking antinodes on a stationary-wave diagram.</li>
+</ul>
+</details>
+<details>
+<summary>Distances in a Stationary Wave</summary>
+<ul>
+<li>The distance between two adjacent nodes is half a wavelength, λ/2.</li>
+<li>The distance between a node and its nearest antinode is one quarter of a wavelength, λ/4.</li>
+<li>One wavelength connects two points at the same stage of their cycles, with the same displacement and velocity.</li>
+<li>Counting the intervals between nodes helps determine how many half-wavelengths fit into a given length.</li>
+</ul>
+</details>
+<details>
+<summary>Seven-Metre Rope Example</summary>
+<ul>
+<li>A 7 m rope with seven nodes, including both ends, contains six node-to-node intervals.</li>
+<li>Each interval represents half a wavelength, so six intervals represent three complete wavelengths.</li>
+<li>Therefore, 3λ = 7 m.</li>
+<li>The wavelength of each progressive wave is λ = 7/3 = 2.3 m to two significant figures.</li>
+</ul>
+</details>
+
+</section>
+
+<section class="card">
+<h2>Quiz (40 Questions)</h2>
+<div id="game-area">
+<button class="btn" onclick="startGame()">Start Quiz</button>
+</div>
+</section>
+
+</div>
+
+<script>
+const questions=[
+  {
+    "type": "mcq",
+    "question": "What is another name for a stationary wave?",
+    "options": [
+      "A standing wave",
+      "A longitudinal pulse",
+      "A travelling particle"
+    ],
+    "answer": 0,
+    "explanation": "A stationary wave is also called a standing wave."
+  },
+  {
+    "type": "mcq",
+    "question": "How many progressive waves are needed to form a stationary wave?",
+    "options": [
+      "Two",
+      "One",
+      "Four"
+    ],
+    "answer": 0,
+    "explanation": "Two progressive waves superpose."
+  },
+  {
+    "type": "mcq",
+    "question": "In which directions must the progressive waves travel?",
+    "options": [
+      "Opposite directions",
+      "The same direction",
+      "At right angles"
+    ],
+    "answer": 0,
+    "explanation": "They must travel in opposite directions."
+  },
+  {
+    "type": "mcq",
+    "question": "What frequency relationship is required?",
+    "options": [
+      "The frequencies must be equal",
+      "One frequency must be zero",
+      "One must be twice the other"
+    ],
+    "answer": 0,
+    "explanation": "Both progressive waves must have the same frequency."
+  },
+  {
+    "type": "mcq",
+    "question": "What process combines the two progressive waves?",
+    "options": [
+      "Superposition",
+      "Refraction",
+      "Polarisation"
+    ],
+    "answer": 0,
+    "explanation": "Their superposition produces the stationary pattern."
+  },
+  {
+    "type": "mcq",
+    "question": "How does a stationary wave differ from a progressive wave?",
+    "options": [
+      "Its pattern stays in a fixed position",
+      "It has no oscillation",
+      "It always travels faster"
+    ],
+    "answer": 0,
+    "explanation": "The stationary pattern does not propagate."
+  },
+  {
+    "type": "mcq",
+    "question": "On the rope, how is oscillation directed relative to propagation?",
+    "options": [
+      "Perpendicular",
+      "Parallel",
+      "In the same line only"
+    ],
+    "answer": 0,
+    "explanation": "The rope carries transverse waves."
+  },
+  {
+    "type": "mcq",
+    "question": "What happens to a peak at a fixed position after half an oscillation?",
+    "options": [
+      "It becomes a trough",
+      "It remains a peak",
+      "It becomes a node"
+    ],
+    "answer": 0,
+    "explanation": "The displacement reverses after half a cycle."
+  },
+  {
+    "type": "mcq",
+    "question": "What is the resultant displacement?",
+    "options": [
+      "The vector sum of the two wave displacements",
+      "The frequency difference",
+      "The wavelength product"
+    ],
+    "answer": 0,
+    "explanation": "Displacements combine vectorially."
+  },
+  {
+    "type": "mcq",
+    "question": "What does it mean when two waves are in phase?",
+    "options": [
+      "Their peaks and troughs align",
+      "A peak aligns with a trough",
+      "Both have zero frequency"
+    ],
+    "answer": 0,
+    "explanation": "In-phase waves are at corresponding cycle positions."
+  },
+  {
+    "type": "mcq",
+    "question": "What interference occurs when the waves align in phase?",
+    "options": [
+      "Maximum constructive interference",
+      "Complete destructive interference",
+      "No interference"
+    ],
+    "answer": 0,
+    "explanation": "Their displacements add."
+  },
+  {
+    "type": "mcq",
+    "question": "What happens to in-phase displacements in the same direction?",
+    "options": [
+      "They add together",
+      "They cancel",
+      "They change frequency"
+    ],
+    "answer": 0,
+    "explanation": "The vector sum has a larger magnitude."
+  },
+  {
+    "type": "mcq",
+    "question": "What does antiphase alignment look like?",
+    "options": [
+      "Peaks align with troughs",
+      "Peaks align with peaks",
+      "Nodes align with antinodes only"
+    ],
+    "answer": 0,
+    "explanation": "Opposite stages of the cycle align."
+  },
+  {
+    "type": "mcq",
+    "question": "What is the resultant when equal amplitudes A and −A combine?",
+    "options": [
+      "Zero",
+      "2A",
+      "A"
+    ],
+    "answer": 0,
+    "explanation": "A − A = 0."
+  },
+  {
+    "type": "mcq",
+    "question": "What interference occurs for equal-amplitude waves in antiphase?",
+    "options": [
+      "Complete destructive interference",
+      "Maximum constructive interference",
+      "Refraction"
+    ],
+    "answer": 0,
+    "explanation": "The opposite displacements cancel."
+  },
+  {
+    "type": "mcq",
+    "question": "At maximum positive displacement, how are the constituent waves aligned?",
+    "options": [
+      "In phase in the positive direction",
+      "In antiphase",
+      "At different frequencies"
+    ],
+    "answer": 0,
+    "explanation": "Their positive displacements add."
+  },
+  {
+    "type": "mcq",
+    "question": "Where is the point after one quarter of an oscillation from maximum positive displacement?",
+    "options": [
+      "At zero displacement",
+      "At maximum negative displacement",
+      "At maximum positive displacement"
+    ],
+    "answer": 0,
+    "explanation": "A quarter-cycle takes it to equilibrium."
+  },
+  {
+    "type": "mcq",
+    "question": "Where is the point after half an oscillation from maximum positive displacement?",
+    "options": [
+      "At maximum negative displacement",
+      "At zero displacement",
+      "Back at maximum positive displacement"
+    ],
+    "answer": 0,
+    "explanation": "Half a cycle reverses the displacement."
+  },
+  {
+    "type": "mcq",
+    "question": "What completes one full oscillation?",
+    "options": [
+      "Returning to the original displacement and motion state",
+      "Reaching zero once",
+      "Moving from positive maximum to negative maximum"
+    ],
+    "answer": 0,
+    "explanation": "A complete cycle returns to the starting state."
+  },
+  {
+    "type": "mcq",
+    "question": "What is a node?",
+    "options": [
+      "A point that always has zero displacement",
+      "A point of maximum displacement",
+      "A travelling peak"
+    ],
+    "answer": 0,
+    "explanation": "Nodes remain at zero displacement."
+  },
+  {
+    "type": "mcq",
+    "question": "Do nodes move along a stationary wave?",
+    "options": [
+      "No",
+      "Yes, at wave speed",
+      "Only at maximum amplitude"
+    ],
+    "answer": 0,
+    "explanation": "Their positions are fixed."
+  },
+  {
+    "type": "mcq",
+    "question": "What type of interference occurs continuously at a node?",
+    "options": [
+      "Destructive interference",
+      "Constructive interference",
+      "No superposition"
+    ],
+    "answer": 0,
+    "explanation": "The constituent displacements cancel there."
+  },
+  {
+    "type": "mcq",
+    "question": "Why is a fixed end of a rope a node?",
+    "options": [
+      "It cannot move",
+      "It has maximum speed",
+      "It doubles the frequency"
+    ],
+    "answer": 0,
+    "explanation": "Its displacement is constrained to zero."
+  },
+  {
+    "type": "mcq",
+    "question": "What is an antinode?",
+    "options": [
+      "A point of maximum oscillation amplitude",
+      "A fixed zero-displacement point",
+      "The end of every progressive wave"
+    ],
+    "answer": 0,
+    "explanation": "Antinodes have the greatest displacement."
+  },
+  {
+    "type": "mcq",
+    "question": "Where is an antinode located?",
+    "options": [
+      "Midway between adjacent nodes",
+      "At every node",
+      "One wavelength beyond a node"
+    ],
+    "answer": 0,
+    "explanation": "Antinodes lie halfway between nodes."
+  },
+  {
+    "type": "mcq",
+    "question": "How does an antinode move over half an oscillation?",
+    "options": [
+      "From one maximum displacement to the opposite maximum",
+      "It remains at zero",
+      "It travels one wavelength"
+    ],
+    "answer": 0,
+    "explanation": "Its displacement reverses over half a cycle."
+  },
+  {
+    "type": "mcq",
+    "question": "Which should be marked first on a stationary-wave diagram?",
+    "options": [
+      "Nodes",
+      "Antinodes",
+      "Peaks only"
+    ],
+    "answer": 0,
+    "explanation": "Nodes are the fixed zero-displacement points."
+  },
+  {
+    "type": "mcq",
+    "question": "Why can antinodes be difficult to identify in a zero-displacement snapshot?",
+    "options": [
+      "The whole wave may lie on equilibrium at that instant",
+      "Antinodes disappear permanently",
+      "The wavelength becomes zero"
+    ],
+    "answer": 0,
+    "explanation": "Even antinodes pass through equilibrium."
+  },
+  {
+    "type": "mcq",
+    "question": "What is the distance between adjacent nodes?",
+    "options": [
+      "λ/2",
+      "λ",
+      "λ/4"
+    ],
+    "answer": 0,
+    "explanation": "Successive nodes are half a wavelength apart."
+  },
+  {
+    "type": "mcq",
+    "question": "What is the distance from a node to the nearest antinode?",
+    "options": [
+      "λ/4",
+      "λ/2",
+      "2λ"
+    ],
+    "answer": 0,
+    "explanation": "An antinode is halfway through a node-to-node interval."
+  },
+  {
+    "type": "mcq",
+    "question": "Which two properties match at points separated by one wavelength?",
+    "options": [
+      "Displacement and velocity",
+      "Amplitude and frequency only",
+      "Mass and density"
+    ],
+    "answer": 0,
+    "explanation": "They are at the same stage of the oscillation cycle."
+  },
+  {
+    "type": "mcq",
+    "question": "How many nodes are in the rope example?",
+    "options": [
+      "Seven",
+      "Six",
+      "Three"
+    ],
+    "answer": 0,
+    "explanation": "The question includes seven nodes, counting both ends."
+  },
+  {
+    "type": "mcq",
+    "question": "Does the node count include the rope ends?",
+    "options": [
+      "Yes",
+      "No",
+      "Only one end"
+    ],
+    "answer": 0,
+    "explanation": "Both held ends are included."
+  },
+  {
+    "type": "mcq",
+    "question": "How long is the rope in the example?",
+    "options": [
+      "7 m",
+      "3 m",
+      "2.3 m"
+    ],
+    "answer": 0,
+    "explanation": "The total rope length is seven metres."
+  },
+  {
+    "type": "mcq",
+    "question": "How many intervals lie between seven nodes?",
+    "options": [
+      "Six",
+      "Seven",
+      "Eight"
+    ],
+    "answer": 0,
+    "explanation": "The number of gaps is one less than the number of nodes."
+  },
+  {
+    "type": "mcq",
+    "question": "How many wavelengths fit along the rope?",
+    "options": [
+      "Three",
+      "Six",
+      "Seven"
+    ],
+    "answer": 0,
+    "explanation": "Six half-wavelength intervals equal three wavelengths."
+  },
+  {
+    "type": "mcq",
+    "question": "Which equation relates rope length and wavelength?",
+    "options": [
+      "3λ = 7 m",
+      "7λ = 3 m",
+      "λ/3 = 7 m"
+    ],
+    "answer": 0,
+    "explanation": "Three complete wavelengths cover seven metres."
+  },
+  {
+    "type": "mcq",
+    "question": "What wavelength is calculated before rounding?",
+    "options": [
+      "7/3 m",
+      "3/7 m",
+      "7 m"
+    ],
+    "answer": 0,
+    "explanation": "λ = 7 ÷ 3."
+  },
+  {
+    "type": "mcq",
+    "question": "What is the wavelength to two significant figures?",
+    "options": [
+      "2.3 m",
+      "2.0 m",
+      "3.5 m"
+    ],
+    "answer": 0,
+    "explanation": "7/3 rounds to 2.3 m."
+  },
+  {
+    "type": "mcq",
+    "question": "Whose wavelength is calculated in the example?",
+    "options": [
+      "The progressive waves that form the stationary wave",
+      "Only the stationary pattern amplitude",
+      "The rope material"
+    ],
+    "answer": 0,
+    "explanation": "The question asks for the constituent progressive-wave wavelength."
+  }
+];
+
+let currentQuestion=0;
+let score=0;
+let shuffledQuestions=[];
+
+function startGame(){
+shuffledQuestions=[...questions].sort(()=>Math.random()-0.5);
+currentQuestion=0;
+score=0;
+showQuestion();
+}
+
+function showQuestion(){
+const gameArea=document.getElementById("game-area");
+const q=shuffledQuestions[currentQuestion];
+let html=`<div><p><strong>Question ${currentQuestion+1}:</strong> ${q.question}</p>`;
+
+if(q.type==="mcq"){
+q.options.forEach((opt,idx)=>{
+html+=`<label style="display:block"><input type="radio" name="opt" value="${idx}"> ${opt}</label>`;
+});
+html+=`<button class="btn" onclick="checkMCQ()">Submit</button>`;
+}else{
+html+=`<input id="fill" type="text" style="width:100%;padding:10px;margin:10px 0;">`;
+html+=`<button class="btn" onclick="checkFill()">Submit</button>`;
+}
+
+html+=`<div id="feedback"></div></div>`;
+gameArea.innerHTML=html;
+}
+
+function checkMCQ(){
+const q=shuffledQuestions[currentQuestion];
+const sel=document.querySelector('input[name="opt"]:checked');
+if(!sel)return;
+
+const feedback=document.getElementById("feedback");
+
+if(parseInt(sel.value)===q.answer){
+feedback.innerHTML=`<p class="correct">Correct! ${q.explanation}</p>`;
+score++;
+}else{
+feedback.innerHTML=`<p class="incorrect">Incorrect. ${q.explanation}</p>`;
+}
+
+setTimeout(nextQuestion,1200);
+}
+
+function checkFill(){
+const q=shuffledQuestions[currentQuestion];
+const ans=document.getElementById("fill").value.trim().toLowerCase();
+const feedback=document.getElementById("feedback");
+
+if(ans.includes(q.answerText)){
+feedback.innerHTML=`<p class="correct">Correct! ${q.explanation}</p>`;
+score++;
+}else{
+feedback.innerHTML=`<p class="incorrect">Incorrect. ${q.explanation}</p>`;
+}
+
+setTimeout(nextQuestion,1200);
+}
+
+function nextQuestion(){
+currentQuestion++;
+if(currentQuestion<shuffledQuestions.length){
+showQuestion();
+}else{
+document.getElementById("game-area").innerHTML=`<h3>Quiz Complete!</h3><p>Your score: ${score}/${shuffledQuestions.length}</p><button class="btn" onclick="startGame()">Try Again</button>`;
+}
+}
+</script>
+
+</body>
+</html>

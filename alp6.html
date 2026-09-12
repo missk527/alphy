@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coherence and Interference</title>
+<style>
+:root{
+--brand:#0ea5e9;
+--ink:#1f2937;
+--paper:#fafafa;
+--card:#ffffff;
+--muted:#6b7280;
+--good:#16a34a;
+--bad:#dc2626;
+}
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+color:var(--ink);
+background:var(--paper);
+line-height:1.6;
+}
+header{
+background:linear-gradient(135deg,var(--brand),#6366f1);
+color:white;
+padding:20px 16px;
+text-align:center;
+}
+.wrap{max-width:1000px;margin:0 auto;padding:16px}
+.card{
+background:var(--card);
+border-radius:12px;
+padding:18px;
+box-shadow:0 6px 18px rgba(2,6,23,.08);
+margin:16px 0;
+}
+iframe{
+width:100%;
+max-width:900px;
+height:480px;
+border:0;
+border-radius:12px;
+}
+details{
+border:1px solid #e5e7eb;
+border-radius:10px;
+padding:10px 12px;
+margin:10px 0;
+background:#fff;
+}
+summary{
+font-weight:700;
+color:#0f766e;
+cursor:pointer;
+}
+.btn{
+background:var(--brand);
+color:white;
+border:0;
+border-radius:10px;
+padding:10px 14px;
+font-weight:700;
+cursor:pointer;
+}
+.correct{color:green}
+.incorrect{color:red}
+</style>
+</head>
+<body>
+
+<header>
+<h1>ALPHY6. Coherence and Interference</h1>
+</header>
+
+<div class="wrap">
+
+<div class="card">
+<iframe src="https://www.youtube.com/embed/pSW6-NZxhOs?si=JYFBL7K26RQuZSkM" allowfullscreen></iframe>
+</div>
+
+<section class="card">
+<h2>Key Notes (Synced with Video)</h2>
+
+<details open>
+<summary>Coherence and Stationary Waves</summary>
+<ul>
+<li>A stationary wave is formed when two progressive waves travelling in opposite directions interfere.</li>
+<li>The two progressive waves must have the same frequency.</li>
+<li>They must also maintain a constant phase relationship over time.</li>
+<li>Coherent waves have the same frequency and a constant phase difference.</li>
+</ul>
+</details>
+<details>
+<summary>Constant Phase Relationship</summary>
+<ul>
+<li>A constant phase relationship does not require the waves to be in phase everywhere.</li>
+<li>At one position, the waves may always be in phase and produce constructive interference.</li>
+<li>At another position, they may always be in antiphase and produce destructive interference.</li>
+<li>The phase difference at each position remains unchanged as time passes.</li>
+</ul>
+</details>
+<details>
+<summary>Stable Interference Patterns</summary>
+<ul>
+<li>When two progressive waves overlap, they interfere.</li>
+<li>Coherent waves produce a stable interference pattern with fixed positions of constructive and destructive interference.</li>
+<li>Two dippers vibrating at the same frequency can produce coherent circular water waves.</li>
+<li>The wavelength is the distance between successive wavefronts.</li>
+</ul>
+</details>
+<details>
+<summary>Meaning of “Stable”</summary>
+<ul>
+<li>A stable interference point is not permanently a peak or permanently a trough.</li>
+<li>At a point of constructive interference, the medium oscillates between a peak and a trough with maximum amplitude.</li>
+<li>The type and position of interference remain fixed even though displacement changes with time.</li>
+</ul>
+</details>
+<details>
+<summary>Nodes and Antinodes</summary>
+<ul>
+<li>A stationary wave is an example of a stable interference pattern.</li>
+<li>Nodes are fixed points of destructive interference and always have zero displacement.</li>
+<li>Antinodes are fixed points of constructive interference and have maximum oscillation amplitude.</li>
+<li>An antinode can momentarily have zero displacement while continuing to be a point of constructive interference.</li>
+</ul>
+</details>
+<details>
+<summary>Wave Directions</summary>
+<ul>
+<li>Coherent waves travelling in opposite directions can form a stable interference pattern.</li>
+<li>Coherent waves that cross at a point can also form a stable interference pattern.</li>
+<li>The waves do not have to travel in opposite directions; coherence is the essential condition.</li>
+</ul>
+</details>
+<details>
+<summary>Coherent and Incoherent Light Sources</summary>
+<ul>
+<li>A filament lamp emits a range of frequencies with a non-constant phase relationship, so it is incoherent.</li>
+<li>Two filament lamps do not produce an observable stable pattern of fixed bright and dark regions.</li>
+<li>Monochromatic light is a continuous electromagnetic oscillation at a single frequency.</li>
+<li>A laser emits monochromatic light and is an example of a coherent source that can produce stable interference patterns.</li>
+</ul>
+</details>
+
+</section>
+
+<section class="card">
+<h2>Quiz (40 Questions)</h2>
+<div id="game-area">
+<button class="btn" onclick="startGame()">Start Quiz</button>
+</div>
+</section>
+
+</div>
+
+<script>
+const questions=[
+  {"type":"mcq","question":"What produces a stationary wave?","options":["Interference of two progressive waves travelling in opposite directions","A single pulse moving through a medium","Two waves with unrelated frequencies"],"answer":0,"explanation":"A stationary wave results from two opposite progressive waves interfering."},
+  {"type":"mcq","question":"What frequency condition is required for a stationary wave?","options":["The waves must have the same frequency","One frequency must be twice the other","Both frequencies must continually change"],"answer":0,"explanation":"The two progressive waves must have equal frequencies."},
+  {"type":"mcq","question":"What phase condition is required for coherent waves?","options":["A constant phase difference","A phase difference that changes randomly","They must always have zero phase difference"],"answer":0,"explanation":"Coherent waves maintain a constant phase relationship."},
+  {"type":"mcq","question":"Which statement best defines coherent waves?","options":["They have the same frequency and a constant phase relationship","They have the same amplitude only","They travel in the same direction only"],"answer":0,"explanation":"Equal frequency and constant phase difference define coherence."},
+  {"type":"mcq","question":"Must coherent waves always be exactly in phase?","options":["No, their phase difference only needs to remain constant","Yes, at every point and time","Only when their amplitudes differ"],"answer":0,"explanation":"Their fixed phase difference may be any value."},
+  {"type":"mcq","question":"What happens when two progressive waves overlap?","options":["They interfere","They lose all energy","They must become longitudinal"],"answer":0,"explanation":"Overlapping waves combine by superposition and interfere."},
+  {"type":"mcq","question":"What kind of pattern do coherent waves produce?","options":["A stable interference pattern","A random frequency spectrum","No interference at all"],"answer":0,"explanation":"Coherence keeps constructive and destructive regions fixed."},
+  {"type":"mcq","question":"What is fixed in a stable interference pattern?","options":["Positions of constructive and destructive interference","The displacement of every point","Every peak and trough forever"],"answer":0,"explanation":"The interference types remain at fixed positions."},
+  {"type":"mcq","question":"How can two water dippers produce a stable pattern?","options":["By vibrating at the same frequency with a constant phase relationship","By stopping alternately","By using unrelated frequencies"],"answer":0,"explanation":"The dippers must act as coherent sources."},
+  {"type":"mcq","question":"What shape are the wavefronts from point-like water dippers?","options":["Circular","Rectangular","Stationary straight lines only"],"answer":0,"explanation":"Each dipper produces circular ripples."},
+  {"type":"mcq","question":"What is wavelength?","options":["The distance between successive wavefronts","The number of waves per second","The maximum displacement"],"answer":0,"explanation":"Wavelength is the separation of adjacent corresponding wavefronts."},
+  {"type":"mcq","question":"At a stable point of constructive interference, what remains maximum?","options":["The oscillation amplitude","The frequency difference","The phase randomness"],"answer":0,"explanation":"Constructive interference gives maximum resultant amplitude."},
+  {"type":"mcq","question":"Does a point of constructive interference stay permanently at a peak?","options":["No, it oscillates between peak and trough","Yes, it never moves","Only if its frequency is zero"],"answer":0,"explanation":"Its displacement changes, but its amplitude remains maximal."},
+  {"type":"mcq","question":"Why is a stationary wave a stable interference pattern?","options":["Its nodes and antinodes remain at fixed positions","Its particles never move","It contains only one progressive wave"],"answer":0,"explanation":"Fixed nodes and antinodes mark fixed destructive and constructive interference."},
+  {"type":"mcq","question":"What type of interference occurs at a node?","options":["Destructive interference","Constructive interference","No superposition"],"answer":0,"explanation":"The waves cancel at nodes."},
+  {"type":"mcq","question":"What is the displacement at a node?","options":["Always zero","Always maximum","Random and unbounded"],"answer":0,"explanation":"A node remains at zero displacement."},
+  {"type":"mcq","question":"What type of interference occurs at an antinode?","options":["Constructive interference","Destructive interference","No interference"],"answer":0,"explanation":"The two waves reinforce at antinodes."},
+  {"type":"mcq","question":"What is greatest at an antinode?","options":["Oscillation amplitude","Phase difference variation","Frequency"],"answer":0,"explanation":"Antinodes have the maximum amplitude on a stationary wave."},
+  {"type":"mcq","question":"Can an antinode have zero displacement at an instant?","options":["Yes, while passing through equilibrium","No, never","Only if coherence is lost"],"answer":0,"explanation":"An antinode oscillates and momentarily crosses zero displacement."},
+  {"type":"mcq","question":"What remains true when an antinode crosses zero displacement?","options":["It is still a point of constructive interference","It becomes a node permanently","Its frequency becomes zero"],"answer":0,"explanation":"Its maximum possible amplitude and interference type are unchanged."},
+  {"type":"mcq","question":"Can coherent waves crossing at a point form a stable pattern?","options":["Yes","No","Only in a vacuum"],"answer":0,"explanation":"Coherent waves can form stable interference wherever they overlap."},
+  {"type":"mcq","question":"Must coherent waves travel in opposite directions?","options":["No","Yes, always","Only light waves must"],"answer":0,"explanation":"They may cross at another angle and still interfere stably."},
+  {"type":"mcq","question":"Which property is essential for a stable interference pattern?","options":["Coherence","A permanently fixed displacement","Different frequencies"],"answer":0,"explanation":"Coherence fixes the phase relationship between the waves."},
+  {"type":"mcq","question":"Why is light from a filament lamp incoherent?","options":["It has many frequencies and a non-constant phase relationship","It has exactly one frequency","It cannot overlap with other light"],"answer":0,"explanation":"Filament light contains a range of frequencies and changing phases."},
+  {"type":"mcq","question":"What type of light does a filament lamp normally produce?","options":["White light containing many frequencies","Perfectly monochromatic light","Light with no frequency"],"answer":0,"explanation":"White light is composed of many colours and frequencies."},
+  {"type":"mcq","question":"Can two independent filament lamps produce an observable stable interference pattern?","options":["No","Yes, always","Only if their brightness differs"],"answer":0,"explanation":"Their light is incoherent, so fixed bright and dark regions do not persist."},
+  {"type":"mcq","question":"What would a stable light interference pattern contain?","options":["Fixed bright and dark regions","Only a uniform bright region","Random colours with no structure"],"answer":0,"explanation":"Constructive and destructive interference create bright and dark regions."},
+  {"type":"mcq","question":"What does monochromatic mean?","options":["Having a single frequency","Having no phase","Having every possible frequency"],"answer":0,"explanation":"Monochromatic light consists of one frequency or colour."},
+  {"type":"mcq","question":"What oscillates continuously in monochromatic light?","options":["The electromagnetic field","A water surface","A stationary mass only"],"answer":0,"explanation":"Light is an electromagnetic wave."},
+  {"type":"mcq","question":"Why does a single light frequency correspond to one colour?","options":["Visible-light colour depends on frequency","Colour depends only on amplitude","Every frequency is white"],"answer":0,"explanation":"Different visible frequencies are perceived as different colours."},
+  {"type":"mcq","question":"Which source in the speech emits monochromatic light?","options":["A laser","A filament lamp","Two ordinary torches"],"answer":0,"explanation":"A laser is given as the coherent monochromatic source."},
+  {"type":"mcq","question":"Why can a laser act as a coherent source?","options":["It emits light of a single frequency with a stable phase relationship","It emits all colours randomly","Its light never interferes"],"answer":0,"explanation":"Laser light has the frequency and phase properties required for coherence."},
+  {"type":"mcq","question":"What can be produced using coherent laser light?","options":["Stable interference patterns","Only incoherent illumination","No bright or dark regions"],"answer":0,"explanation":"Coherent laser waves can maintain stable interference."},
+  {"type":"mcq","question":"At a point where two coherent waves are always in phase, what occurs?","options":["Constructive interference","Destructive interference","Changing frequency"],"answer":0,"explanation":"In-phase waves reinforce each other."},
+  {"type":"mcq","question":"At a point where two coherent waves are always in antiphase, what occurs?","options":["Destructive interference","Constructive interference","No overlap"],"answer":0,"explanation":"Antiphase waves cancel each other."},
+  {"type":"mcq","question":"What does a constant phase relationship mean over time?","options":["The phase difference does not change","Both waves stop oscillating","The wavelength becomes zero"],"answer":0,"explanation":"The waves retain the same relative phase."},
+  {"type":"mcq","question":"In a stationary wave, which points mark fixed destructive interference?","options":["Nodes","Antinodes","Wavefronts"],"answer":0,"explanation":"Nodes are permanent cancellation points."},
+  {"type":"mcq","question":"In a stationary wave, which points mark fixed constructive interference?","options":["Antinodes","Nodes","Sources"],"answer":0,"explanation":"Antinodes are positions of reinforcement and maximum amplitude."},
+  {"type":"mcq","question":"Which pair is most likely to be incoherent?","options":["Two independent filament lamps","Two waves derived from one coherent laser","Two phase-locked water dippers"],"answer":0,"explanation":"Independent filament lamps have many frequencies and unstable phase relationships."},
+  {"type":"mcq","question":"Which summary of stable interference is correct?","options":["Interference positions stay fixed while local displacement may change","Every point remains motionless","The waves must have different frequencies"],"answer":0,"explanation":"Stability refers to fixed interference positions, not fixed instantaneous displacement."}
+];
+
+let currentQuestion=0;
+let score=0;
+let shuffledQuestions=[];
+
+function startGame(){
+shuffledQuestions=[...questions].sort(()=>Math.random()-0.5);
+currentQuestion=0;
+score=0;
+showQuestion();
+}
+
+function showQuestion(){
+const gameArea=document.getElementById("game-area");
+const q=shuffledQuestions[currentQuestion];
+let html=`<div><p><strong>Question ${currentQuestion+1}:</strong> ${q.question}</p>`;
+
+if(q.type==="mcq"){
+q.options.forEach((opt,idx)=>{
+html+=`<label style="display:block"><input type="radio" name="opt" value="${idx}"> ${opt}</label>`;
+});
+html+=`<button class="btn" onclick="checkMCQ()">Submit</button>`;
+}else{
+html+=`<input id="fill" type="text" style="width:100%;padding:10px;margin:10px 0;">`;
+html+=`<button class="btn" onclick="checkFill()">Submit</button>`;
+}
+
+html+=`<div id="feedback"></div></div>`;
+gameArea.innerHTML=html;
+}
+
+function checkMCQ(){
+const q=shuffledQuestions[currentQuestion];
+const sel=document.querySelector('input[name="opt"]:checked');
+if(!sel)return;
+
+const feedback=document.getElementById("feedback");
+
+if(parseInt(sel.value)===q.answer){
+feedback.innerHTML=`<p class="correct">Correct! ${q.explanation}</p>`;
+score++;
+}else{
+feedback.innerHTML=`<p class="incorrect">Incorrect. ${q.explanation}</p>`;
+}
+
+setTimeout(nextQuestion,1200);
+}
+
+function checkFill(){
+const q=shuffledQuestions[currentQuestion];
+const ans=document.getElementById("fill").value.trim().toLowerCase();
+const feedback=document.getElementById("feedback");
+
+if(ans.includes(q.answerText)){
+feedback.innerHTML=`<p class="correct">Correct! ${q.explanation}</p>`;
+score++;
+}else{
+feedback.innerHTML=`<p class="incorrect">Incorrect. ${q.explanation}</p>`;
+}
+
+setTimeout(nextQuestion,1200);
+}
+
+function nextQuestion(){
+currentQuestion++;
+if(currentQuestion<shuffledQuestions.length){
+showQuestion();
+}else{
+document.getElementById("game-area").innerHTML=`<h3>Quiz Complete!</h3><p>Your score: ${score}/${shuffledQuestions.length}</p><button class="btn" onclick="startGame()">Try Again</button>`;
+}
+}
+</script>
+
+</body>
+</html>

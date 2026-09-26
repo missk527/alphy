@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coherence and Interference</title>
+<style>
+:root{
+--brand:#0ea5e9;
+--ink:#1f2937;
+--paper:#fafafa;
+--card:#ffffff;
+--muted:#6b7280;
+--good:#16a34a;
+--bad:#dc2626;
+}
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+color:var(--ink);
+background:var(--paper);
+line-height:1.6;
+}
+header{
+background:linear-gradient(135deg,var(--brand),#6366f1);
+color:white;
+padding:20px 16px;
+text-align:center;
+}
+.wrap{max-width:1000px;margin:0 auto;padding:16px}
+.card{
+background:var(--card);
+border-radius:12px;
+padding:18px;
+box-shadow:0 6px 18px rgba(2,6,23,.08);
+margin:16px 0;
+}
+iframe{
+width:100%;
+max-width:900px;
+height:480px;
+border:0;
+border-radius:12px;
+}
+details{
+border:1px solid #e5e7eb;
+border-radius:10px;
+padding:10px 12px;
+margin:10px 0;
+background:#fff;
+}
+summary{
+font-weight:700;
+color:#0f766e;
+cursor:pointer;
+}
+.btn{
+background:var(--brand);
+color:white;
+border:0;
+border-radius:10px;
+padding:10px 14px;
+font-weight:700;
+cursor:pointer;
+}
+.correct{color:green}
+.incorrect{color:red}
+</style>
+</head>
+<body>
+
+<header>
+<h1>ALPHY8. Young’s Double-Slit Experiment and Light</h1>
+</header>
+
+<div class="wrap">
+
+<div class="card">
+<iframe src="https://www.youtube.com/embed/NQ52Nz9-Wjo?si=g_poBrpe6hSNdrjf" allowfullscreen></iframe>
+</div>
+
+<section class="card">
+<h2>Key Notes (Synced with Video)</h2>
+<details open>
+<summary>Young’s Double-Slit Experiment</summary>
+<ul>
+<li>Interference occurs when two waves overlap and superpose; a stable interference pattern is evidence of wave behaviour.</li>
+<li>Thomas Young used two narrow slits to produce two coherent light sources, S1 and S2.</li>
+<li>Light diffracts at both slits, overlaps, and creates alternating bright and dark fringes on a screen.</li>
+</ul>
+</details>
+<details>
+<summary>Producing Coherent Light</summary>
+<ul>
+<li>A filament lamp emits white light containing many colours and frequencies. A colour filter selects approximately one colour, giving monochromatic light.</li>
+<li>The first single slit acts as an effective point source: its diffracted light has a consistent phase across the beam.</li>
+<li>Light from the single slit reaches both narrow slits, making their waves the same frequency with a constant phase difference.</li>
+<li>A laser supplies highly monochromatic, coherent light and can be used instead of the filtered lamp.</li>
+</ul>
+</details>
+<details>
+<summary>Bright and Dark Fringes</summary>
+<ul>
+<li>A bright fringe marks constructive interference: waves arrive in phase and reinforce each other.</li>
+<li>A dark fringe marks destructive interference: waves arrive in antiphase and cancel.</li>
+<li>The fixed pattern of fringes demonstrates the wave nature of light.</li>
+</ul>
+</details>
+<details>
+<summary>Newton and the Colour Spectrum</summary>
+<ul>
+<li>Isaac Newton proposed a particle theory: light consists of particles he called corpuscles.</li>
+<li>His theory could explain reflection and refraction.</li>
+<li>A prism separates white light into a spectrum; Newton linked the colours to light itself and divided the spectrum into seven regions.</li>
+</ul>
+</details>
+<details>
+<summary>Huygens and Young: Wave Evidence</summary>
+<ul>
+<li>Christiaan Huygens proposed that light is a wave, with oscillations perpendicular to its direction of travel.</li>
+<li>His wave theory could also explain reflection and refraction.</li>
+<li>Young’s observed interference supplied evidence for the wave theory because interference is a wave property.</li>
+</ul>
+</details>
+<details>
+<summary>Laser Safety</summary>
+<ul>
+<li>A convex lens can focus a laser beam into a small spot, concentrating its intensity.</li>
+<li>The eye’s lens can focus a direct or reflected laser beam onto the retina and damage it.</li>
+<li>Never look along a laser beam, even after reflection. Use appropriate laser safety glasses when required.</li>
+</ul>
+</details>
+</section>
+
+<section class="card">
+<h2>Quiz (40 Questions)</h2>
+<div id="game-area">
+<button class="btn" onclick="startGame()">Start Quiz</button>
+</div>
+</section>
+
+</div>
+
+<script>
+const questions=[
+  {
+    "type": "mcq",
+    "question": "What does interference mean?",
+    "options": [
+      "Overlapping waves superpose to form a resultant wave.",
+      "It diffracts into curved wavefronts.",
+      "The wave nature of light."
+    ],
+    "answer": 0,
+    "explanation": "Overlapping waves superpose to form a resultant wave."
+  },
+  {
+    "type": "mcq",
+    "question": "What does a stable interference pattern show about light?",
+    "options": [
+      "Both are illuminated by the same effective point source.",
+      "Isaac Newton.",
+      "Light behaves as a wave."
+    ],
+    "answer": 2,
+    "explanation": "Light behaves as a wave."
+  },
+  {
+    "type": "mcq",
+    "question": "Who performed the double-slit experiment discussed in the video?",
+    "options": [
+      "Corpuscles.",
+      "Thomas Young.",
+      "They have the same frequency and a constant phase difference."
+    ],
+    "answer": 1,
+    "explanation": "Thomas Young."
+  },
+  {
+    "type": "mcq",
+    "question": "What are the two narrow slits commonly labelled?",
+    "options": [
+      "S1 and S2.",
+      "They receive light from the same monochromatic source.",
+      "Reflection and refraction."
+    ],
+    "answer": 0,
+    "explanation": "S1 and S2."
+  },
+  {
+    "type": "mcq",
+    "question": "What happens to light as it passes through each narrow slit?",
+    "options": [
+      "A laser.",
+      "It refracts and separates it into a colour spectrum.",
+      "It diffracts and spreads out."
+    ],
+    "answer": 2,
+    "explanation": "It diffracts and spreads out."
+  },
+  {
+    "type": "mcq",
+    "question": "Why do waves from the two slits interfere?",
+    "options": [
+      "Seven.",
+      "They overlap after diffracting.",
+      "It is highly monochromatic and coherent."
+    ],
+    "answer": 1,
+    "explanation": "They overlap after diffracting."
+  },
+  {
+    "type": "mcq",
+    "question": "What is seen on the screen in Young’s experiment?",
+    "options": [
+      "Alternating bright and dark fringes.",
+      "Constructive interference.",
+      "To light itself."
+    ],
+    "answer": 0,
+    "explanation": "Alternating bright and dark fringes."
+  },
+  {
+    "type": "mcq",
+    "question": "What does a filament lamp emit?",
+    "options": [
+      "In phase, so they reinforce one another.",
+      "Christiaan Huygens.",
+      "White light containing many colours and frequencies."
+    ],
+    "answer": 2,
+    "explanation": "White light containing many colours and frequencies."
+  },
+  {
+    "type": "mcq",
+    "question": "Why is a colour filter placed after the filament lamp?",
+    "options": [
+      "Perpendicular to the direction in which light travels.",
+      "To select approximately one colour or frequency.",
+      "It reaches a maximum."
+    ],
+    "answer": 1,
+    "explanation": "To select approximately one colour or frequency."
+  },
+  {
+    "type": "mcq",
+    "question": "What is monochromatic light?",
+    "options": [
+      "Light of a single colour or frequency.",
+      "Destructive interference.",
+      "Reflection and refraction."
+    ],
+    "answer": 0,
+    "explanation": "Light of a single colour or frequency."
+  },
+  {
+    "type": "mcq",
+    "question": "What is the role of the initial single slit?",
+    "options": [
+      "In antiphase, so they cancel.",
+      "Light showed interference, a wave property.",
+      "It acts as an effective point source of light."
+    ],
+    "answer": 2,
+    "explanation": "It acts as an effective point source of light."
+  },
+  {
+    "type": "mcq",
+    "question": "What does the light do at the initial single slit?",
+    "options": [
+      "A convex lens.",
+      "It diffracts into curved wavefronts.",
+      "The light waves cancel, leaving nearly zero resultant amplitude."
+    ],
+    "answer": 1,
+    "explanation": "It diffracts into curved wavefronts."
+  },
+  {
+    "type": "mcq",
+    "question": "Why do both narrow slits receive light with a consistent phase relationship?",
+    "options": [
+      "Both are illuminated by the same effective point source.",
+      "The wave nature of light.",
+      "Its intensity is concentrated in a small area."
+    ],
+    "answer": 0,
+    "explanation": "Both are illuminated by the same effective point source."
+  },
+  {
+    "type": "mcq",
+    "question": "What two properties define coherent waves?",
+    "options": [
+      "Isaac Newton.",
+      "The eye’s lens.",
+      "They have the same frequency and a constant phase difference."
+    ],
+    "answer": 2,
+    "explanation": "They have the same frequency and a constant phase difference."
+  },
+  {
+    "type": "mcq",
+    "question": "Why can the two slits act as coherent sources?",
+    "options": [
+      "The retina.",
+      "They receive light from the same monochromatic source.",
+      "Corpuscles."
+    ],
+    "answer": 1,
+    "explanation": "They receive light from the same monochromatic source."
+  },
+  {
+    "type": "mcq",
+    "question": "What light source can replace the filtered filament lamp?",
+    "options": [
+      "A laser.",
+      "Reflection and refraction.",
+      "No; even reflected laser light can damage the eye."
+    ],
+    "answer": 0,
+    "explanation": "A laser."
+  },
+  {
+    "type": "mcq",
+    "question": "Why is laser light useful for double-slit interference?",
+    "options": [
+      "It refracts and separates it into a colour spectrum.",
+      "Appropriate laser safety glasses.",
+      "It is highly monochromatic and coherent."
+    ],
+    "answer": 2,
+    "explanation": "It is highly monochromatic and coherent."
+  },
+  {
+    "type": "mcq",
+    "question": "What causes a bright fringe?",
+    "options": [
+      "Overlapping waves superpose to form a resultant wave.",
+      "Constructive interference.",
+      "Seven."
+    ],
+    "answer": 1,
+    "explanation": "Constructive interference."
+  },
+  {
+    "type": "mcq",
+    "question": "How do the waves arrive at a bright fringe?",
+    "options": [
+      "In phase, so they reinforce one another.",
+      "To light itself.",
+      "Light behaves as a wave."
+    ],
+    "answer": 0,
+    "explanation": "In phase, so they reinforce one another."
+  },
+  {
+    "type": "mcq",
+    "question": "What happens to the resultant amplitude at a bright fringe?",
+    "options": [
+      "Christiaan Huygens.",
+      "Thomas Young.",
+      "It reaches a maximum."
+    ],
+    "answer": 2,
+    "explanation": "It reaches a maximum."
+  },
+  {
+    "type": "mcq",
+    "question": "What causes a dark fringe?",
+    "options": [
+      "S1 and S2.",
+      "Destructive interference.",
+      "Perpendicular to the direction in which light travels."
+    ],
+    "answer": 1,
+    "explanation": "Destructive interference."
+  },
+  {
+    "type": "mcq",
+    "question": "How do the waves arrive at a dark fringe?",
+    "options": [
+      "In antiphase, so they cancel.",
+      "Reflection and refraction.",
+      "It diffracts and spreads out."
+    ],
+    "answer": 0,
+    "explanation": "In antiphase, so they cancel."
+  },
+  {
+    "type": "mcq",
+    "question": "Why does a dark fringe appear dark?",
+    "options": [
+      "Light showed interference, a wave property.",
+      "They overlap after diffracting.",
+      "The light waves cancel, leaving nearly zero resultant amplitude."
+    ],
+    "answer": 2,
+    "explanation": "The light waves cancel, leaving nearly zero resultant amplitude."
+  },
+  {
+    "type": "mcq",
+    "question": "What does the fringe pattern demonstrate?",
+    "options": [
+      "Alternating bright and dark fringes.",
+      "The wave nature of light.",
+      "A convex lens."
+    ],
+    "answer": 1,
+    "explanation": "The wave nature of light."
+  },
+  {
+    "type": "mcq",
+    "question": "Who proposed an early particle theory of light?",
+    "options": [
+      "Isaac Newton.",
+      "Its intensity is concentrated in a small area.",
+      "White light containing many colours and frequencies."
+    ],
+    "answer": 0,
+    "explanation": "Isaac Newton."
+  },
+  {
+    "type": "mcq",
+    "question": "What did Newton call the proposed particles of light?",
+    "options": [
+      "The eye’s lens.",
+      "To select approximately one colour or frequency.",
+      "Corpuscles."
+    ],
+    "answer": 2,
+    "explanation": "Corpuscles."
+  },
+  {
+    "type": "mcq",
+    "question": "Which two optical phenomena could Newton’s theory explain?",
+    "options": [
+      "Light of a single colour or frequency.",
+      "Reflection and refraction.",
+      "The retina."
+    ],
+    "answer": 1,
+    "explanation": "Reflection and refraction."
+  },
+  {
+    "type": "mcq",
+    "question": "What does a prism do to white light?",
+    "options": [
+      "It refracts and separates it into a colour spectrum.",
+      "No; even reflected laser light can damage the eye.",
+      "It acts as an effective point source of light."
+    ],
+    "answer": 0,
+    "explanation": "It refracts and separates it into a colour spectrum."
+  },
+  {
+    "type": "mcq",
+    "question": "How many regions did Newton use to divide the colour spectrum?",
+    "options": [
+      "Appropriate laser safety glasses.",
+      "It diffracts into curved wavefronts.",
+      "Seven."
+    ],
+    "answer": 2,
+    "explanation": "Seven."
+  },
+  {
+    "type": "mcq",
+    "question": "Did Newton attribute the spectrum’s colours to the prism or to light?",
+    "options": [
+      "Both are illuminated by the same effective point source.",
+      "To light itself.",
+      "Overlapping waves superpose to form a resultant wave."
+    ],
+    "answer": 1,
+    "explanation": "To light itself."
+  },
+  {
+    "type": "mcq",
+    "question": "Who proposed the competing wave theory of light?",
+    "options": [
+      "Christiaan Huygens.",
+      "Light behaves as a wave.",
+      "They have the same frequency and a constant phase difference."
+    ],
+    "answer": 0,
+    "explanation": "Christiaan Huygens."
+  },
+  {
+    "type": "mcq",
+    "question": "How did Huygens describe the direction of light’s oscillations?",
+    "options": [
+      "Thomas Young.",
+      "They receive light from the same monochromatic source.",
+      "Perpendicular to the direction in which light travels."
+    ],
+    "answer": 2,
+    "explanation": "Perpendicular to the direction in which light travels."
+  },
+  {
+    "type": "mcq",
+    "question": "Which phenomena could Huygens’ wave theory also explain?",
+    "options": [
+      "A laser.",
+      "Reflection and refraction.",
+      "S1 and S2."
+    ],
+    "answer": 1,
+    "explanation": "Reflection and refraction."
+  },
+  {
+    "type": "mcq",
+    "question": "Why did Young’s result support wave theory?",
+    "options": [
+      "Light showed interference, a wave property.",
+      "It diffracts and spreads out.",
+      "It is highly monochromatic and coherent."
+    ],
+    "answer": 0,
+    "explanation": "Light showed interference, a wave property."
+  },
+  {
+    "type": "mcq",
+    "question": "What type of lens focuses a laser beam to a fine spot?",
+    "options": [
+      "They overlap after diffracting.",
+      "Constructive interference.",
+      "A convex lens."
+    ],
+    "answer": 2,
+    "explanation": "A convex lens."
+  },
+  {
+    "type": "mcq",
+    "question": "What happens to intensity when a beam is focused into a small spot?",
+    "options": [
+      "In phase, so they reinforce one another.",
+      "Its intensity is concentrated in a small area.",
+      "Alternating bright and dark fringes."
+    ],
+    "answer": 1,
+    "explanation": "Its intensity is concentrated in a small area."
+  },
+  {
+    "type": "mcq",
+    "question": "Which part of the eye focuses incoming laser light?",
+    "options": [
+      "The eye’s lens.",
+      "White light containing many colours and frequencies.",
+      "It reaches a maximum."
+    ],
+    "answer": 0,
+    "explanation": "The eye’s lens."
+  },
+  {
+    "type": "mcq",
+    "question": "Which part of the eye can a focused laser beam damage?",
+    "options": [
+      "To select approximately one colour or frequency.",
+      "Destructive interference.",
+      "The retina."
+    ],
+    "answer": 2,
+    "explanation": "The retina."
+  },
+  {
+    "type": "mcq",
+    "question": "Should you look along a reflected laser beam?",
+    "options": [
+      "In antiphase, so they cancel.",
+      "No; even reflected laser light can damage the eye.",
+      "Light of a single colour or frequency."
+    ],
+    "answer": 1,
+    "explanation": "No; even reflected laser light can damage the eye."
+  },
+  {
+    "type": "mcq",
+    "question": "What protective equipment may be used when working with lasers?",
+    "options": [
+      "Appropriate laser safety glasses.",
+      "It acts as an effective point source of light.",
+      "The light waves cancel, leaving nearly zero resultant amplitude."
+    ],
+    "answer": 0,
+    "explanation": "Appropriate laser safety glasses."
+  }
+];
+
+let currentQuestion=0;
+let score=0;
+let shuffledQuestions=[];
+
+function startGame(){
+shuffledQuestions=[...questions].sort(()=>Math.random()-0.5);
+currentQuestion=0;
+score=0;
+showQuestion();
+}
+
+function showQuestion(){
+const gameArea=document.getElementById("game-area");
+const q=shuffledQuestions[currentQuestion];
+let html=`<div><p><strong>Question ${currentQuestion+1}:</strong> ${q.question}</p>`;
+
+if(q.type==="mcq"){
+q.options.forEach((opt,idx)=>{
+html+=`<label style="display:block"><input type="radio" name="opt" value="${idx}"> ${opt}</label>`;
+});
+html+=`<button class="btn" onclick="checkMCQ()">Submit</button>`;
+}else{
+html+=`<input id="fill" type="text" style="width:100%;padding:10px;margin:10px 0;">`;
+html+=`<button class="btn" onclick="checkFill()">Submit</button>`;
+}
+
+html+=`<div id="feedback"></div></div>`;
+gameArea.innerHTML=html;
+}
+
+function checkMCQ(){
+const q=shuffledQuestions[currentQuestion];
+const sel=document.querySelector('input[name="opt"]:checked');
+if(!sel)return;
+
+const feedback=document.getElementById("feedback");
+
+if(parseInt(sel.value)===q.answer){
+feedback.innerHTML=`<p class="correct">Correct! ${q.explanation}</p>`;
+score++;
+}else{
+feedback.innerHTML=`<p class="incorrect">Incorrect. ${q.explanation}</p>`;
+}
+
+setTimeout(nextQuestion,1200);
+}
+
+function checkFill(){
+const q=shuffledQuestions[currentQuestion];
+const ans=document.getElementById("fill").value.trim().toLowerCase();
+const feedback=document.getElementById("feedback");
+
+if(ans.includes(q.answerText)){
+feedback.innerHTML=`<p class="correct">Correct! ${q.explanation}</p>`;
+score++;
+}else{
+feedback.innerHTML=`<p class="incorrect">Incorrect. ${q.explanation}</p>`;
+}
+
+setTimeout(nextQuestion,1200);
+}
+
+function nextQuestion(){
+currentQuestion++;
+if(currentQuestion<shuffledQuestions.length){
+showQuestion();
+}else{
+document.getElementById("game-area").innerHTML=`<h3>Quiz Complete!</h3><p>Your score: ${score}/${shuffledQuestions.length}</p><button class="btn" onclick="startGame()">Try Again</button>`;
+}
+}
+</script>
+
+</body>
+</html>

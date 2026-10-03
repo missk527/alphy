@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diffraction Gratings and Grating Spacing</title>
+<style>
+:root{
+--brand:#0ea5e9;
+--ink:#1f2937;
+--paper:#fafafa;
+--card:#ffffff;
+--muted:#6b7280;
+--good:#16a34a;
+--bad:#dc2626;
+}
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+color:var(--ink);
+background:var(--paper);
+line-height:1.6;
+}
+header{
+background:linear-gradient(135deg,var(--brand),#6366f1);
+color:white;
+padding:20px 16px;
+text-align:center;
+}
+.wrap{max-width:1000px;margin:0 auto;padding:16px}
+.card{
+background:var(--card);
+border-radius:12px;
+padding:18px;
+box-shadow:0 6px 18px rgba(2,6,23,.08);
+margin:16px 0;
+}
+iframe{
+width:100%;
+max-width:900px;
+height:480px;
+border:0;
+border-radius:12px;
+}
+details{
+border:1px solid #e5e7eb;
+border-radius:10px;
+padding:10px 12px;
+margin:10px 0;
+background:#fff;
+}
+summary{
+font-weight:700;
+color:#0f766e;
+cursor:pointer;
+}
+.btn{
+background:var(--brand);
+color:white;
+border:0;
+border-radius:10px;
+padding:10px 14px;
+font-weight:700;
+cursor:pointer;
+}
+.correct{color:green}
+.incorrect{color:red}
+</style>
+</head>
+<body>
+
+<header>
+<h1>ALPHY9. Diffraction Gratings and Grating Spacing</h1>
+</header>
+
+<div class="wrap">
+
+<div class="card">
+<iframe src="https://www.youtube.com/embed/DgnqpqXrhzs?si=BTlZAXBpt3L7dolg" allowfullscreen></iframe>
+</div>
+
+<section class="card">
+<h2>Key Notes (Synced with Video)</h2>
+<details open>
+<summary>What Is a Diffraction Grating?</summary>
+<ul>
+<li>A diffraction grating is a plate with thousands of very narrow, parallel, equally spaced slits. Individual slits are too small to see clearly with the naked eye.</li>
+<li>Monochromatic light has a single frequency. In the arrangement described, it strikes the grating normally: perpendicular to the grating surface.</li>
+</ul>
+</details>
+<details>
+<summary>Diffraction and Interference</summary>
+<ul>
+<li>Light diffracts at every slit, spreading out so that waves from different slits overlap and interfere.</li>
+<li>Waves reinforce in certain directions to form bright principal beams. Between these beams, destructive interference produces dark regions; weaker secondary maxima can also occur.</li>
+<li>The principle is similar to the double-slit experiment, but a grating uses many slits. A screen reveals bright fringes separated by dark regions.</li>
+</ul>
+</details>
+<details>
+<summary>Orders of the Bright Beams</summary>
+<ul>
+<li>The beam along the central axis is the zero-order beam.</li>
+<li>Moving outwards on either side, the bright principal beams are called first order, second order, and so on.</li>
+</ul>
+</details>
+<details>
+<summary>Grating Spacing</summary>
+<ul>
+<li>Grating spacing, d, is the distance between neighbouring slits.</li>
+<li>A grating is often specified by its line density: the number of lines per unit length.</li>
+<li>For N lines in a length L, d = L / N. Equivalently, spacing is the reciprocal of line density when consistent units are used.</li>
+<li>Use L in metres to obtain d in metres. More lines per unit length means smaller spacing.</li>
+</ul>
+</details>
+<details>
+<summary>Worked Example: 600 Lines per Millimetre</summary>
+<ul>
+<li>The grating is used as a spectrometer to analyse light from a filament bulb.</li>
+<li>Choose L = 1 mm = 1 x 10^-3 m, containing N = 600 lines.</li>
+<li>d = (1 x 10^-3) / 600 = 1.666... x 10^-6 m.</li>
+<li>To three significant figures, d = 1.67 x 10^-6 m = 1.67 micrometres.</li>
+<li>Correction to the speech: the final exponent should be -6, not -3.</li>
+</ul>
+</details>
+</section>
+
+<section class="card">
+<h2>Quiz (40 Questions)</h2>
+<div id="game-area">
+<button class="btn" onclick="startGame()">Start Quiz</button>
+</div>
+</section>
+
+</div>
+
+<script>
+const questions=[
+  {
+    "type": "mcq",
+    "question": "What is a diffraction grating?",
+    "options": [
+      "A plate containing thousands of narrow, parallel slits.",
+      "A plate with one wide opening.",
+      "A solid plate with no slits."
+    ],
+    "answer": 0,
+    "explanation": "A plate containing thousands of narrow, parallel slits."
+  },
+  {
+    "type": "mcq",
+    "question": "How are the slits in a diffraction grating arranged?",
+    "options": [
+      "They are randomly positioned.",
+      "They are parallel and equally spaced.",
+      "They are perpendicular to one another."
+    ],
+    "answer": 1,
+    "explanation": "They are parallel and equally spaced."
+  },
+  {
+    "type": "mcq",
+    "question": "Why are individual grating slits difficult to see with the naked eye?",
+    "options": [
+      "They emit no light at any time.",
+      "They move too quickly.",
+      "They are extremely small."
+    ],
+    "answer": 2,
+    "explanation": "They are extremely small."
+  },
+  {
+    "type": "mcq",
+    "question": "What does normal incidence mean?",
+    "options": [
+      "The beam is perpendicular to the grating.",
+      "The beam is parallel to the grating.",
+      "The beam strikes at any arbitrary angle."
+    ],
+    "answer": 0,
+    "explanation": "The beam is perpendicular to the grating."
+  },
+  {
+    "type": "mcq",
+    "question": "What angle does a normally incident beam make with the grating surface?",
+    "options": [
+      "0 degrees.",
+      "90 degrees.",
+      "45 degrees."
+    ],
+    "answer": 1,
+    "explanation": "90 degrees."
+  },
+  {
+    "type": "mcq",
+    "question": "What is monochromatic light?",
+    "options": [
+      "Light containing all visible frequencies.",
+      "Light with no frequency.",
+      "Light of a single frequency."
+    ],
+    "answer": 2,
+    "explanation": "Light of a single frequency."
+  },
+  {
+    "type": "mcq",
+    "question": "What happens to light at each narrow slit?",
+    "options": [
+      "It diffracts and spreads out.",
+      "It stops permanently.",
+      "It always travels without spreading."
+    ],
+    "answer": 0,
+    "explanation": "It diffracts and spreads out."
+  },
+  {
+    "type": "mcq",
+    "question": "What is diffraction?",
+    "options": [
+      "The absorption of all incident waves.",
+      "The spreading of waves as they pass through a gap.",
+      "The production of light by a hot object."
+    ],
+    "answer": 1,
+    "explanation": "The spreading of waves as they pass through a gap."
+  },
+  {
+    "type": "mcq",
+    "question": "Why can light from different grating slits interfere?",
+    "options": [
+      "The slits absorb all the light.",
+      "The waves never meet.",
+      "The diffracted waves overlap."
+    ],
+    "answer": 2,
+    "explanation": "The diffracted waves overlap."
+  },
+  {
+    "type": "mcq",
+    "question": "What does interference involve?",
+    "options": [
+      "Overlapping waves superposing.",
+      "A single wave disappearing before reaching a slit.",
+      "A change in the material of the grating."
+    ],
+    "answer": 0,
+    "explanation": "Overlapping waves superposing."
+  },
+  {
+    "type": "mcq",
+    "question": "What type of interference produces the principal bright beams?",
+    "options": [
+      "Destructive interference.",
+      "Constructive interference.",
+      "No interference."
+    ],
+    "answer": 1,
+    "explanation": "Constructive interference."
+  },
+  {
+    "type": "mcq",
+    "question": "How do waves combine at a principal bright maximum?",
+    "options": [
+      "They cancel completely.",
+      "They cannot overlap.",
+      "They arrive in phase and reinforce."
+    ],
+    "answer": 2,
+    "explanation": "They arrive in phase and reinforce."
+  },
+  {
+    "type": "mcq",
+    "question": "What type of interference produces dark regions?",
+    "options": [
+      "Destructive interference.",
+      "Constructive interference.",
+      "Reflection only."
+    ],
+    "answer": 0,
+    "explanation": "Destructive interference."
+  },
+  {
+    "type": "mcq",
+    "question": "What happens to the resultant amplitude when waves cancel?",
+    "options": [
+      "It always doubles.",
+      "It becomes small or zero.",
+      "It becomes infinite."
+    ],
+    "answer": 1,
+    "explanation": "It becomes small or zero."
+  },
+  {
+    "type": "mcq",
+    "question": "How is grating interference similar to double-slit interference?",
+    "options": [
+      "Neither involves diffraction.",
+      "Both require only one slit.",
+      "Diffracted waves overlap and interfere in both."
+    ],
+    "answer": 2,
+    "explanation": "Diffracted waves overlap and interfere in both."
+  },
+  {
+    "type": "mcq",
+    "question": "What distinguishes a grating from a double slit?",
+    "options": [
+      "A grating has many more slits.",
+      "A grating has no slits.",
+      "A grating cannot produce interference."
+    ],
+    "answer": 0,
+    "explanation": "A grating has many more slits."
+  },
+  {
+    "type": "mcq",
+    "question": "What can a screen show when monochromatic light passes through a grating?",
+    "options": [
+      "Only a uniform white area.",
+      "Bright fringes separated by dark regions.",
+      "Only the physical slits enlarged."
+    ],
+    "answer": 1,
+    "explanation": "Bright fringes separated by dark regions."
+  },
+  {
+    "type": "mcq",
+    "question": "What is the central beam called?",
+    "options": [
+      "The first-order beam.",
+      "The second-order beam.",
+      "The zero-order beam."
+    ],
+    "answer": 2,
+    "explanation": "The zero-order beam."
+  },
+  {
+    "type": "mcq",
+    "question": "Where is the zero-order beam located?",
+    "options": [
+      "Along the central axis.",
+      "Only at the far left edge.",
+      "At right angles to the central axis."
+    ],
+    "answer": 0,
+    "explanation": "Along the central axis."
+  },
+  {
+    "type": "mcq",
+    "question": "Which principal beams are closest to the zero-order beam?",
+    "options": [
+      "The second-order beams.",
+      "The first-order beams.",
+      "The third-order beams."
+    ],
+    "answer": 1,
+    "explanation": "The first-order beams."
+  },
+  {
+    "type": "mcq",
+    "question": "Which principal beams lie beyond the first-order beams?",
+    "options": [
+      "The zero-order beam.",
+      "The incident beam.",
+      "The second-order beams."
+    ],
+    "answer": 2,
+    "explanation": "The second-order beams."
+  },
+  {
+    "type": "mcq",
+    "question": "How are the principal beams labelled?",
+    "options": [
+      "By their order from the central axis.",
+      "By the mass of the grating.",
+      "By the temperature of the screen."
+    ],
+    "answer": 0,
+    "explanation": "By their order from the central axis."
+  },
+  {
+    "type": "mcq",
+    "question": "For normal incidence, on which sides of the central axis do first-order beams appear?",
+    "options": [
+      "Only on one side.",
+      "On both sides.",
+      "Neither side."
+    ],
+    "answer": 1,
+    "explanation": "On both sides."
+  },
+  {
+    "type": "mcq",
+    "question": "What is grating spacing?",
+    "options": [
+      "The distance from the grating to the screen.",
+      "The thickness of the screen.",
+      "The distance between neighbouring slits."
+    ],
+    "answer": 2,
+    "explanation": "The distance between neighbouring slits."
+  },
+  {
+    "type": "mcq",
+    "question": "Which symbol represents grating spacing?",
+    "options": [
+      "d.",
+      "f.",
+      "v."
+    ],
+    "answer": 0,
+    "explanation": "d."
+  },
+  {
+    "type": "mcq",
+    "question": "Why is there a single value of grating spacing for an ideal uniform grating?",
+    "options": [
+      "The screen is always one metre away.",
+      "The slits are equally spaced.",
+      "The light has no wavelength."
+    ],
+    "answer": 1,
+    "explanation": "The slits are equally spaced."
+  },
+  {
+    "type": "mcq",
+    "question": "How is a grating line density commonly quoted?",
+    "options": [
+      "As the number of screens per second.",
+      "As the light intensity per kilogram.",
+      "As the number of lines per unit length."
+    ],
+    "answer": 2,
+    "explanation": "As the number of lines per unit length."
+  },
+  {
+    "type": "mcq",
+    "question": "What does 600 lines per millimetre mean?",
+    "options": [
+      "There are 600 lines in a 1 mm length.",
+      "Each slit is 600 mm wide.",
+      "The grating is always 600 mm long."
+    ],
+    "answer": 0,
+    "explanation": "There are 600 lines in a 1 mm length."
+  },
+  {
+    "type": "mcq",
+    "question": "Which equation gives grating spacing from length and line count?",
+    "options": [
+      "d = L times N.",
+      "d = L / N.",
+      "d = N / L."
+    ],
+    "answer": 1,
+    "explanation": "d = L / N."
+  },
+  {
+    "type": "mcq",
+    "question": "What does L represent in d = L / N?",
+    "options": [
+      "The wavelength of the light.",
+      "The distance to the screen.",
+      "The length along the grating containing N lines."
+    ],
+    "answer": 2,
+    "explanation": "The length along the grating containing N lines."
+  },
+  {
+    "type": "mcq",
+    "question": "What does N represent in d = L / N?",
+    "options": [
+      "The number of lines in the length L.",
+      "The frequency of the incident light.",
+      "The order of a bright beam."
+    ],
+    "answer": 0,
+    "explanation": "The number of lines in the length L."
+  },
+  {
+    "type": "mcq",
+    "question": "What unit should L use to obtain d in metres?",
+    "options": [
+      "Millimetres without conversion.",
+      "Metres.",
+      "Degrees."
+    ],
+    "answer": 1,
+    "explanation": "Metres."
+  },
+  {
+    "type": "mcq",
+    "question": "How many metres are in 1 mm?",
+    "options": [
+      "0.01 m.",
+      "0.000001 m.",
+      "0.001 m."
+    ],
+    "answer": 2,
+    "explanation": "0.001 m."
+  },
+  {
+    "type": "mcq",
+    "question": "Which substitution is correct for 600 lines per mm?",
+    "options": [
+      "d = 0.001 / 600 m.",
+      "d = 1 / 600 m.",
+      "d = 600 / 0.001 m."
+    ],
+    "answer": 0,
+    "explanation": "d = 0.001 / 600 m."
+  },
+  {
+    "type": "mcq",
+    "question": "What is the spacing for 600 lines per mm to three significant figures?",
+    "options": [
+      "1.67 x 10^-3 m.",
+      "1.67 x 10^-6 m.",
+      "6.00 x 10^-6 m."
+    ],
+    "answer": 1,
+    "explanation": "1.67 x 10^-6 m."
+  },
+  {
+    "type": "mcq",
+    "question": "What is that spacing in micrometres to three significant figures?",
+    "options": [
+      "1670 micrometres.",
+      "0.00167 micrometres.",
+      "1.67 micrometres."
+    ],
+    "answer": 2,
+    "explanation": "1.67 micrometres."
+  },
+  {
+    "type": "mcq",
+    "question": "For a fixed length, what happens to spacing if the number of lines increases?",
+    "options": [
+      "The spacing decreases.",
+      "The spacing increases.",
+      "The spacing is unchanged."
+    ],
+    "answer": 0,
+    "explanation": "The spacing decreases."
+  },
+  {
+    "type": "mcq",
+    "question": "What happens to spacing if the line density doubles?",
+    "options": [
+      "The spacing doubles.",
+      "The spacing halves.",
+      "The spacing becomes zero."
+    ],
+    "answer": 1,
+    "explanation": "The spacing halves."
+  },
+  {
+    "type": "mcq",
+    "question": "What is the grating used as in the worked example?",
+    "options": [
+      "A thermometer.",
+      "A balance.",
+      "A spectrometer."
+    ],
+    "answer": 2,
+    "explanation": "A spectrometer."
+  },
+  {
+    "type": "mcq",
+    "question": "What light source is analysed in the worked example?",
+    "options": [
+      "A filament bulb.",
+      "A radio transmitter.",
+      "A loudspeaker."
+    ],
+    "answer": 0,
+    "explanation": "A filament bulb."
+  }
+];
+
+let currentQuestion=0;
+let score=0;
+let shuffledQuestions=[];
+
+function startGame(){
+shuffledQuestions=[...questions].sort(()=>Math.random()-0.5);
+currentQuestion=0;
+score=0;
+showQuestion();
+}
+
+function showQuestion(){
+const gameArea=document.getElementById("game-area");
+const q=shuffledQuestions[currentQuestion];
+let html=`<div><p><strong>Question ${currentQuestion+1}:</strong> ${q.question}</p>`;
+
+if(q.type==="mcq"){
+q.options.forEach((opt,idx)=>{
+html+=`<label style="display:block"><input type="radio" name="opt" value="${idx}"> ${opt}</label>`;
+});
+html+=`<button class="btn" onclick="checkMCQ()">Submit</button>`;
+}else{
+html+=`<input id="fill" type="text" style="width:100%;padding:10px;margin:10px 0;">`;
+html+=`<button class="btn" onclick="checkFill()">Submit</button>`;
+}
+
+html+=`<div id="feedback"></div></div>`;
+gameArea.innerHTML=html;
+}
+
+function checkMCQ(){
+const q=shuffledQuestions[currentQuestion];
+const sel=document.querySelector('input[name="opt"]:checked');
+if(!sel)return;
+
+const feedback=document.getElementById("feedback");
+
+if(parseInt(sel.value)===q.answer){
+feedback.innerHTML=`<p class="correct">Correct! ${q.explanation}</p>`;
+score++;
+}else{
+feedback.innerHTML=`<p class="incorrect">Incorrect. ${q.explanation}</p>`;
+}
+
+setTimeout(nextQuestion,1200);
+}
+
+function checkFill(){
+const q=shuffledQuestions[currentQuestion];
+const ans=document.getElementById("fill").value.trim().toLowerCase();
+const feedback=document.getElementById("feedback");
+
+if(ans.includes(q.answerText)){
+feedback.innerHTML=`<p class="correct">Correct! ${q.explanation}</p>`;
+score++;
+}else{
+feedback.innerHTML=`<p class="incorrect">Incorrect. ${q.explanation}</p>`;
+}
+
+setTimeout(nextQuestion,1200);
+}
+
+function nextQuestion(){
+currentQuestion++;
+if(currentQuestion<shuffledQuestions.length){
+showQuestion();
+}else{
+document.getElementById("game-area").innerHTML=`<h3>Quiz Complete!</h3><p>Your score: ${score}/${shuffledQuestions.length}</p><button class="btn" onclick="startGame()">Try Again</button>`;
+}
+}
+</script>
+
+</body>
+</html>
